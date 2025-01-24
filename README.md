@@ -17,3 +17,6 @@ For creating UML, [drawio.com](https://www.drawio.com/) was used. A quick [tutor
 [Move Constructor](https://www.scaler.com/topics/cpp-move-constructor/)
 
 [Move Semantics](https://irkos.org/cpp/move/)
+
+# Function Templates
+To understand function templates, the concepts of [decay](https://64.github.io/cpp-faq/decay/#:~:text=When%20we%20call%20functions%20in,conversions%20rules%20are%20called%20decay.) and [decltype](https://learn.microsoft.com/en-us/cpp/cpp/decltype-cpp?view=msvc-170) should be familiar. If not, use more than these reference material research the ideas before diving into function templates. Decay and decltype are foundations to function templates.
