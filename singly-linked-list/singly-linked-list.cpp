@@ -25,7 +25,7 @@ SLList::~SLList() {
 }
 
 int SLList::isEmpty() {
-	return head == 0;
+	return head == nullptr;
 }
 
 void SLList::addToHead(int data) {
@@ -34,13 +34,13 @@ void SLList::addToHead(int data) {
 	head = tmp; // head is now pointing to tmp
 
 	// checks if the list is empty
-	if (tail == 0)
+	if (tail == nullptr)
 		tail = head;
 }
 
 void SLList::addToTail(int data) {
 	// if not empty
-	if (tail != 0)
+	if (tail != nullptr)
 	{
 		tail->next = new SLLNode(data); // tail's next node is the new node
 		tail = tail->next; // tail is now pointing to 
@@ -51,52 +51,67 @@ void SLList::addToTail(int data) {
 }
 
 // returns content from deleted head node
-int SLList::deleteFromHead() {
-	int data = head->data; // creates new data for the delete node - it will be returned
-	SLLNode* tmp = head;
+int* SLList::deleteFromHead() {
+	// list is not empty
+	if (!isEmpty())
+	{
+		int data = head->data; // creates new data for the delete node - it will be returned
+		SLLNode* tmp = head;
 
-	// only one node in the list
-	if (head == tail)
-		head = tail = 0;
+		// only one node in the list
+		if (head == tail)
+			head = tail = nullptr;
+		else
+			head = head->next; // assigning head to next node
+
+		delete tmp;
+
+		return &data;
+	}
 	else
-		head = head->next; // assigning head to next node
-
-	delete tmp;
-	
-	return data;
+		return nullptr;
 }
 
-int SLList::deleteFromTail() {
-	int data = tail->data;
-	
-	if (head == tail)
+int* SLList::deleteFromTail() {
+	// edge condition -- list is empty
+	if (!isEmpty())
 	{
-		delete head;
-		head = tail = 0;
+		int data = tail->data;
+
+		// only one node to delete
+		if (head == tail)
+		{
+			delete head;
+			head = tail = nullptr;
+		}
+		// more than one node in list
+		else
+		{
+			SLLNode* tmp;
+
+			// finds the second to last node,
+			// because singly linked list doesn't allow to go back one node
+			for (tmp = head; tmp->next != tail; tmp = tmp->next);
+
+			delete tail;
+			tail = tmp;
+			tail->next = nullptr; // makes sure tail's next nodes is null
+		}
+
+		return &data;
 	}
 	else
-	{
-		SLLNode* tmp;
-
-		// finds the second to last node
-		for (tmp = head; tmp->next != tail; tmp = tmp->next);
-
-		delete tail;
-		tail = tmp;
-		tail->next = 0; // makes sure tail's next nodes is null
-	}
-
-	return data;
+		return nullptr;
 }
 
 void SLList::deleteSLLNode(int nodeData) {
 	// if not a empty list
-	if (head != 0) {
+	if (head != nullptr) {
 		// only one node in the list
 		if (head == tail && nodeData == head->data)
 		{
 			delete head;
-			head = tail = 0;
+			head = tail = nullptr;
 		}
 		// if data are happens to be head's data, but more than one node
 		else if (nodeData == head->data)
@@ -112,10 +127,10 @@ void SLList::deleteSLLNode(int nodeData) {
 
 			// current and forward move until forward has the node with the data, and it's not the last node in the list
 			for (current = head, forward = head->next;
-				forward != 0 && !(forward->data == nodeData);
+				forward != nullptr && !(forward->data == nodeData);
 				current = current->next, forward = forward->next);
 
-			if (forward != 0)
+			if (forward != nullptr)
 			{
 				current->next = forward->next; // current points to forward's next node, ultimately skipping cur node all together
 
@@ -133,7 +148,7 @@ bool SLList::isInList(int data) const {
 	SLLNode* tmp;
 
 	// searches for the data in the list
-	for (tmp = head; tmp != 0 && !(tmp->data == data); tmp = tmp->next);
+	for (tmp = head; tmp != nullptr && !(tmp->data == data); tmp = tmp->next);
 
-	return tmp != 0;
+	return tmp != nullptr;
 }

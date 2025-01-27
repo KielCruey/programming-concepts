@@ -7,6 +7,8 @@ int main()
 	SLList* list3 = new SLList();
 	SLList* list4 = new SLList();
 	SLList* list5 = new SLList();
+	SLList* list6 = new SLList();
+	SLList* list7 = new SLList();
 
 	// testing add to head function
 	list1->addToHead(2);
@@ -39,10 +41,18 @@ int main()
 	list5->deleteSLLNode(100);
 
 	// testing delete from head function
+	// condtion #1 -- more than 2 nodes
 	auto value = list1->deleteFromHead();
 
+	// condtion #2 -- list is empty
+	auto* anotherVal = list6->deleteFromHead();
+
 	// testing delete from tail function
+	// condtion #1 -- more than 2 nodes
 	auto aValue = list2->deleteFromTail();
+
+	// condtion #2 -- list is empty
+	auto* otherVal = list6->deleteFromHead();
 
 	// testing is in list function
 	auto isInList = list1->isInList(-10);
@@ -53,6 +63,8 @@ int main()
 	delete list3;
 	delete list4;
 	delete list5;
+	delete list6;
+	delete list7;
 
 	return 0;
 }
