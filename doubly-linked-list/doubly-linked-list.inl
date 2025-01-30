@@ -147,7 +147,7 @@ void DLList<t>::deleteDLLNode(t nodeData) {
 
 				current->next = forward->next; // current points to forward's next node, ultimately skipping cur node all together
 
-				// edge conition, if forward node is actually the tail node
+				// edge condition, if forward node is actually the tail node
 				if (forward == tail)
 				{
 					tail = current;
