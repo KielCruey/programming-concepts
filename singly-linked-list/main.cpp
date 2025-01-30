@@ -2,13 +2,13 @@
 
 int main()
 {
-	SLList* list1 = new SLList();
-	SLList* list2 = new SLList();
-	SLList* list3 = new SLList();
-	SLList* list4 = new SLList();
-	SLList* list5 = new SLList();
-	SLList* list6 = new SLList();
-	SLList* list7 = new SLList();
+	SLList<int>* list1 = new SLList<int>();
+	SLList<int>* list2 = new SLList<int>();
+	SLList<int>* list3 = new SLList<int>();
+	SLList<int>* list4 = new SLList<int>();
+	SLList<int>* list5 = new SLList<int>();
+	SLList<int>* list6 = new SLList<int>();
+	SLList<int>* list7 = new SLList<int>();
 
 	// testing add to head function
 	list1->addToHead(2);
