@@ -26,3 +26,5 @@ Overview of [doubly linked list](https://www.youtube.com/watch?v=gQCkB9Jh9D0)
 
 # Skip Lists
 Really good explanation of a [skip list](https://www.youtube.com/watch?v=hqHwQUdTgLM&t=8s)
+
+Insertions and deletion of a [skip list](https://www.youtube.com/watch?v=1G8h3u6Thzs)
