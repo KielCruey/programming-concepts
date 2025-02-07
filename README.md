@@ -23,3 +23,6 @@ Overview of [doubly linked list](https://www.youtube.com/watch?v=gQCkB9Jh9D0)
 
 # Circular Linked List
 [Article](https://www.geeksforgeeks.org/circular-linked-list/)
+
+# Skip Lists
+Really good explanation of a [skip list](https://www.youtube.com/watch?v=hqHwQUdTgLM&t=8s)
