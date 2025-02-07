@@ -25,6 +25,6 @@ Overview of [doubly linked list](https://www.youtube.com/watch?v=gQCkB9Jh9D0)
 [Article](https://www.geeksforgeeks.org/circular-linked-list/)
 
 # GitHub Actions (CI/CD)
-(tutorial series 1](https://www.youtube.com/watch?v=FkZX3JxVyxs&list=PLiO7XHcmTsldbtsB7xYhZ9hRqbSg8_Mjq)
+[tutorial series 1](https://www.youtube.com/watch?v=FkZX3JxVyxs&list=PLiO7XHcmTsldbtsB7xYhZ9hRqbSg8_Mjq)
 
 [Intro to GitHub Actions](https://www.youtube.com/watch?v=ljINpvCvHnQ)
