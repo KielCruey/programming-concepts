@@ -17,3 +17,6 @@ For creating UML, [drawio.com](https://www.drawio.com/) was used. A quick [tutor
 [Move Constructor](https://www.scaler.com/topics/cpp-move-constructor/)
 
 [Move Semantics](https://irkos.org/cpp/move/)
+
+# Doubly Linked List
+Overview of [doubly linked list](https://www.youtube.com/watch?v=gQCkB9Jh9D0)
