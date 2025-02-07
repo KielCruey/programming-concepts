@@ -20,3 +20,6 @@ For creating UML, [drawio.com](https://www.drawio.com/) was used. A quick [tutor
 
 # Circular Linked List
 [Article](https://www.geeksforgeeks.org/circular-linked-list/)
+
+# Skip Lists
+Really good explanation of a [skip list](https://www.youtube.com/watch?v=hqHwQUdTgLM&t=8s)
