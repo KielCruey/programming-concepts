@@ -25,3 +25,6 @@ For creating UML, [drawio.com](https://www.drawio.com/) was used. A quick [tutor
 [tutorial series 1](https://www.youtube.com/watch?v=FkZX3JxVyxs&list=PLiO7XHcmTsldbtsB7xYhZ9hRqbSg8_Mjq)
 
 [Intro to GitHub Actions](https://www.youtube.com/watch?v=ljINpvCvHnQ)
+
+# YAML 
+[YAML intro video](https://www.youtube.com/watch?v=BEki_rsWu4E)
