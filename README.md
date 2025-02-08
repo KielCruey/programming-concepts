@@ -28,3 +28,6 @@ Overview of [doubly linked list](https://www.youtube.com/watch?v=gQCkB9Jh9D0)
 [tutorial series 1](https://www.youtube.com/watch?v=FkZX3JxVyxs&list=PLiO7XHcmTsldbtsB7xYhZ9hRqbSg8_Mjq)
 
 [Intro to GitHub Actions](https://www.youtube.com/watch?v=ljINpvCvHnQ)
+
+# YAML 
+[YAML intro video](https://www.youtube.com/watch?v=BEki_rsWu4E)
