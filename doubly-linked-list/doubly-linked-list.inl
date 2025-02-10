@@ -37,15 +37,19 @@ bool DLList<t>::isEmpty() {
 }
 
 template<class t>
-void DLList<t>::addToHead(t data)
+void DLList<t>::addToHead(const t& data)
 {
-	DLLNode<t>* tmp = new DLLNode<t>(data);
-	tmp->next = head; // current head is tmp's next node
-	head = tmp; // head is now pointing to tmp
-
+	// if not empty
+	if (head != nullptr)
+	{
+		DLLNode<t>* tmp = new DLLNode<t>(data);
+		tmp->next = head; // current head is tmp's next node
+		head->previous = tmp;
+		head = tmp; // head is now pointing to tmp
+	}
 	// checks if the list is empty
-	if (tail == nullptr)
-		tail = head;
+	else
+		tail = head = new DLLNode<t>(data);
 }
 
 template<class t>
@@ -54,11 +58,11 @@ void DLList<t>::addToTail(const t& data)
 	// if not empty
 	if (tail != nullptr)
 	{
-		DLLNode<t>* p = new DLLNode<t>(data);
+		DLLNode<t>* tmp = new DLLNode<t>(data);
 
-		tail->next = p; // tail's next node is the new node
-		p->previous = tail; // new node's previous is "old" tail
-		tail = p; // "new" tail gets renamed to correct tail
+		tail->next = tmp; // tail's next node is the new node
+		tmp->previous = tail; // new node's previous is "old" tail
+		tail = tmp; // "new" tail gets renamed to correct tail
 	}
 	// if empty, then tail and head are the same node
 	else
@@ -115,17 +119,17 @@ t* DLList<t>::deleteFromTail() {
 }
 
 template<class t>
-void DLList<t>::deleteDLLNode(t nodeData) {
+void DLList<t>::deleteDLLNode(t data) {
 	// if not a empty list
 	if (head != nullptr) {
 		// only one head node in the list
-		if (head == tail && nodeData == head->data)
+		if (head == tail && data == head->data)
 		{
 			delete head;
 			head = tail = nullptr;
 		}
 		// if data are happens to be head's data, but more than one node
-		else if (nodeData == head->data)
+		else if (data == head->data)
 		{
 			DLLNode<t>* tmp = head;
 			head = head->next;
@@ -138,7 +142,7 @@ void DLList<t>::deleteDLLNode(t nodeData) {
 
 			// current and forward move until forward has the node with the data, and it's not the last node in the list
 			for (current = head, forward = head->next;
-				forward != nullptr && !(forward->data == nodeData);
+				forward != nullptr && !(forward->data == data);
 				current = current->next, forward = forward->next);
 
 			if (forward != nullptr)

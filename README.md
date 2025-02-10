@@ -18,5 +18,8 @@ For creating UML, [drawio.com](https://www.drawio.com/) was used. A quick [tutor
 
 [Move Semantics](https://irkos.org/cpp/move/)
 
+# Doubly Linked List
+Overview of [doubly linked list](https://www.youtube.com/watch?v=gQCkB9Jh9D0)
+
 # Circular Linked List
 [Article](https://www.geeksforgeeks.org/circular-linked-list/)
