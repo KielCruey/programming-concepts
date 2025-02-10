@@ -19,11 +19,11 @@ public:
 	~DLList();
 
 	bool isEmpty();
-	void addToHead(t data);
+	void addToHead(const t& data);
 	void addToTail(const t& data);
 	t* deleteFromHead(); // delete the head and return its data
 	t* deleteFromTail(); // delete the tail and return its data
-	void deleteDLLNode(t nodeData);
+	void deleteDLLNode(t data);
 	bool isInList(t data) const;
 
 protected:
