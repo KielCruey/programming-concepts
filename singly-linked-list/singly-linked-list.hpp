@@ -1,29 +1,35 @@
 // a singly linked list only has node data and a pointer pointing to the next node. 
-
+template <class t>
 class SLLNode
 {
 public:
-	SLLNode(int data, SLLNode* next = nullptr);
+	SLLNode();
+	SLLNode(t data, SLLNode<t>* next = nullptr);
 
-	int data;
-	SLLNode* next;
+	t data;
+	SLLNode<t>* next;
 };
 
+template <class t>
 class SLList
 {
 public:
-	SLList(SLLNode* head = nullptr, SLLNode* tail = nullptr);
+	SLList(SLLNode<t>* head = nullptr, SLLNode<t>* tail = nullptr);
 	~SLList();
 
-	int isEmpty();
-	void addToHead(int data);
-	void addToTail(int data);
-	int* deleteFromHead(); // delete the head and return its data
-	int* deleteFromTail(); // delete the tail and return its data
-	void deleteSLLNode(int nodeData);
-	bool isInList(int data) const;
+	bool isEmpty();
+	void addToHead(t data);
+	void addToTail(t data);
+	t* deleteFromHead(); // delete the head and return its data
+	t* deleteFromTail(); // delete the tail and return its data
+	void deleteSLLNode(t nodeData);
+	bool isInList(t data) const;
 
 private:
-	SLLNode* head;
-	SLLNode* tail;
+	SLLNode<t>* head;
+	SLLNode<t>* tail;
 };
+
+#include "singly-linked-list.inl"
+
+
