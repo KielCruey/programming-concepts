@@ -23,3 +23,6 @@ Overview of [doubly linked list](https://www.youtube.com/watch?v=gQCkB9Jh9D0)
 
 # Circular Linked List
 [Article](https://www.geeksforgeeks.org/circular-linked-list/)
+
+# Priority Queues
+Article about [priority queues](https://www.geeksforgeeks.org/priority-queue-set-1-introduction/#)
