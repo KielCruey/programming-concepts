@@ -1,15 +1,17 @@
 #include <cstdlib>  // rand
+#include <stddef.h> // NULL
 
 // ============== SkipList ==============
 template<class t>
 SkipList<t>::SkipList() {
+	// initializing all skip list pointer values 
 	for (int i = 0; i < maxLevel; i++)
-		root[i] = 0;
+		root[i] = nullptr;
 }
 
 template<class t>
 bool SkipList<t>::isEmpty() const {
-	return root[0] == 0;
+	return root[0] == nullptr;
 }
 
 template<class t>
@@ -45,9 +47,9 @@ t* SkipList<t>::skipListSearch(const t& key) {
 
 	while (true)
 	{
-		if (key == curr->key)
+		if (key == curr->key) // success if equal
 			return &curr->key;
-		else if (key < curr->key) {
+		else if (key < curr->key) { // if smaller go down
 			if (lvl == 0)
 				return 0;
 			else if (curr == root[lvl])

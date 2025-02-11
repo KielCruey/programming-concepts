@@ -18,13 +18,14 @@ public:
 
 	bool isEmpty() const;
 	void choosePower();
-	int	chooseLevel();
+	int	chooseLevel(); // determines the vertical value of the skip list node
 	t* skipListSearch(const t& key);
 	void skipListInsert(const t& key);
 
 private:
-	typedef SkipListNode<t>* nodePtr;
-	nodePtr root[maxLevel];
+	typedef SkipListNode<t>* nodePtr; // renames skip list node to a better name called 'nodePtr'
+
+	nodePtr root[maxLevel]; // an array of skip list pointers
 	int powers[maxLevel];
 };
 

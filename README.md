@@ -25,6 +25,8 @@ Overview of [doubly linked list](https://www.youtube.com/watch?v=gQCkB9Jh9D0)
 [Article](https://www.geeksforgeeks.org/circular-linked-list/)
 
 # Skip Lists
+Article about [skip list](https://www.geeksforgeeks.org/skip-list/#)
+
 Really good explanation of a [skip list](https://www.youtube.com/watch?v=hqHwQUdTgLM&t=8s)
 
 Insertions and deletion of a [skip list](https://www.youtube.com/watch?v=1G8h3u6Thzs)
