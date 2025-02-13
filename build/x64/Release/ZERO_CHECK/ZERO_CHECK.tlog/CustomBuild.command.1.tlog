@@ -1,0 +1,10 @@
+^C:\SRC\PROGRAMMING-CONCEPTS\BUILD\CMAKEFILES\BF646476CD8AFEF360283825177EF6AA\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/src/programming-concepts -BC:/src/programming-concepts/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/src/programming-concepts/build/Programming-Concepts.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
