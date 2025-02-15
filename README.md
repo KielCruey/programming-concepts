@@ -1,5 +1,10 @@
 # Programming Concepts
+## Building
 
+```
+cmake -B build -S . -D CMAKE_BUILD_TYPE=Release
+cmake --build build --config Release
+```
 # UML Diagrams
 General UML [tutorial](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-class-diagram-tutorial/) on the class diagrams.
 
