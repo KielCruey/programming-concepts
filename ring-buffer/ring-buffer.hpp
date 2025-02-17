@@ -1,16 +1,14 @@
 #include <vector>
 
 template<class t, const int maxCapacity = 20>
-class CircularBuffer
+class RingBuffer
 {
 public:
-	CircularBuffer();
+	RingBuffer();
 
 	void clear();
-	void push(const t& element); // adds element to tail
-	void pop(const t& element); // add element to head
-	t front(); // deletes element from front
-	t back(); // deletes element from back
+	void enqueue(const t& element); // adds element to tail
+	void dequeue(const t& element); // deletes element to from tail
 	bool isEmpty() const;
 	bool isFull() const;
 	int bufferSize() const; // total lenght of buffer

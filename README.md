@@ -31,3 +31,6 @@ Important concepts
 - If you reach the end of the buffer, the pointers simply wrap around to the beginning.
 
 [Article](https://embeddedartistry.com/blog/2017/05/17/creating-a-circular-buffer-in-c-and-c/) for implementing circular buffer in C/C++.
+
+# Ring Buffer
+[ring buffer](https://stackoverflow.com/questions/32109705/what-is-the-difference-between-a-ring-buffer-and-a-circular-linked-list)
