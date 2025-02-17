@@ -23,3 +23,11 @@ Overview of [doubly linked list](https://www.youtube.com/watch?v=gQCkB9Jh9D0)
 
 # Circular Linked List
 [Article](https://www.geeksforgeeks.org/circular-linked-list/)
+
+# Circular Buffer
+Important concepts
+- When data is added, the head pointer advances.
+- When data is consumed, the tail pointer advances.
+- If you reach the end of the buffer, the pointers simply wrap around to the beginning.
+
+[Article](https://embeddedartistry.com/blog/2017/05/17/creating-a-circular-buffer-in-c-and-c/) for implementing circular buffer in C/C++.
