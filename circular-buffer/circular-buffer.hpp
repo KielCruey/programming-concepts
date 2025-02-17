@@ -1,26 +1,27 @@
 #include <vector>
 
-template<class t, const int length = 20>
+template<class t, const int maxCapacity = 20>
 class CircularBuffer
 {
 public:
 	CircularBuffer();
 
 	void clear();
-	void push(); // adds element to tail
-	void pop(); // add element to head
-	t front();
-	t back();
+	void push(const t& element); // adds element to tail
+	void pop(const t& element); // add element to head
+	t front(); // deletes element from front
+	t back(); // deletes element from back
 	bool isEmpty() const;
 	bool isFull() const;
-	void bufferSize() const; // total lenght of buffer
-	void capacity() const; // the number of current elements in buffer
+	int bufferSize() const; // total lenght of buffer
+	int bufferCapacity() const; // the number of current elements in buffer
 
 private:
 	std::vector<t> buffer;
-	t* head;
+	t* head; // pointers to elements
 	t* tail;
-	const int size;
+	int size; // currently how many elements are in buffer
+	const int capacity; // max size
 };
 
 #include "circular-buffer.inl"
