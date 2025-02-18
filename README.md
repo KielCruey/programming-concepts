@@ -1,4 +1,10 @@
 # Programming Concepts
+## Building Project via CMake
+```
+cmake -B build -S .
+cmake --build build --config Release
+```
+
 
 # UML Diagrams
 General UML [tutorial](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-class-diagram-tutorial/) on the class diagrams.
