@@ -2,7 +2,7 @@
 
 int main()
 {
-	RingBuffer<int> cBuffer;
+	RingBuffer<int> rBuffer;
 
 	return 0;
 }

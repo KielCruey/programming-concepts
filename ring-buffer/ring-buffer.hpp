@@ -6,20 +6,27 @@ class RingBuffer
 public:
 	RingBuffer();
 
+	void addFront(const t& element); // adds element to head
+	void addBack(const t& element); // adds element to tail
+	bool removeFront(); // deletes element to from head
+	bool removeBack(); // deletes element to from tail
+
 	void clear();
-	void enqueue(const t& element); // adds element to tail
-	void dequeue(const t& element); // deletes element to from tail
 	bool isEmpty() const;
 	bool isFull() const;
-	int bufferSize() const; // total lenght of buffer
-	int bufferCapacity() const; // the number of current elements in buffer
-
+	int incrementIndex(int index);
+	int decrementIndex(int index);
+	int currentSize() const; // the number of current elements in buffer
+	int maxCapacity() const; // max size of buffer
+	
 private:
 	std::vector<t> buffer;
 	t* head; // pointers to elements
 	t* tail;
-	int size; // currently how many elements are in buffer
-	const int capacity; // max size
+	int headIndex;
+	int tailIndex;
+	int size; // currently how many elements are in buffer -- will change
+	const int capacity; // max size -- can't change
 };
 
-#include "circular-buffer.inl"
+#include "ring-buffer.inl"
