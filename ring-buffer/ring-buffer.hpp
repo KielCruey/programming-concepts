@@ -1,13 +1,14 @@
 #include <vector>
 
-template<class t, const int maxCapacity = 20>
+template<class t, int maxCapacity = 20>
 class RingBuffer
 {
 public:
 	RingBuffer();
+	~RingBuffer();
 
-	void addFront(const t& element); // adds element to head
-	void addBack(const t& element); // adds element to tail
+	void addFront(const t& element); // adds element to head -- will write over a value
+	void addBack(const t& element); // adds element to tail -- will write over a value
 	bool removeFront(); // deletes element to from head
 	bool removeBack(); // deletes element to from tail
 

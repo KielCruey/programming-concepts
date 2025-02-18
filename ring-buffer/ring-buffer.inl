@@ -1,8 +1,15 @@
-template<class t, const int maxCapacity>
+template<class t, int maxCapacity>
 inline RingBuffer<t, maxCapacity>::RingBuffer() :
-	head(nullptr), tail(nullptr), size(0), capacity(maxCapacity)
+	head(nullptr), tail(nullptr),
+	headIndex(0), tailIndex(0),	size(0)
 {
+	capacity = maxCapacity;
 	buffer.resize(capacity); // sets vector it to the max size
+}
+
+template<class t, int maxCapacity>
+inline RingBuffer<t, maxCapacity>::~RingBuffer()
+{
 }
 
 template<class t, int maxCapacity>
@@ -14,32 +21,43 @@ inline void RingBuffer<t, maxCapacity>::addFront(const t& element) {
 
 template<class t, int maxCapacity>
 inline void RingBuffer<t, maxCapacity>::addBack(const t& element) {
+	// edge condition
 	if (isEmpty()) {
-		tail = head = buffer[0];
+		tail = head = &tailIndex;
+		*tail = element;
+		tailIndex++;
 	}
 }
 
 template<class t, int maxCapacity>
 inline bool RingBuffer<t, maxCapacity>::removeFront() {
+	// edge condition
+	if (isEmpty())
+		// do nothing
+
 	return false;
 }
 
 template<class t, int maxCapacity>
 inline bool RingBuffer<t, maxCapacity>::removeBack() {
+	// edge condition
+	if(isEmpty())
+		// do nothing
+
 	return false;
 }
 
-template<class t, const int maxCapacity>
+template<class t, int maxCapacity>
 inline void RingBuffer<t, maxCapacity>::clear() {
 	buffer.clear();
 }
 
-template<class t, const int maxCapacity>
+template<class t, int maxCapacity>
 inline bool RingBuffer<t, maxCapacity>::isEmpty() const {
 	return size == 0;
 }
 
-template<class t, const int maxCapacity>
+template<class t, int maxCapacity>
 inline bool RingBuffer<t, maxCapacity>::isFull() const {
 	return size == capacity;
 }
@@ -66,12 +84,12 @@ inline int RingBuffer<t, maxCapacity>::decrementIndex(int index) {
 	return index;
 }
 
-template<class t, const int maxCapacity>
+template<class t, int maxCapacity>
 inline int RingBuffer<t, maxCapacity>::currentSize() const {
 	buffer.size();
 }
 
-template<class t, const int maxCapacity>
+template<class t, int maxCapacity>
 inline int RingBuffer<t, maxCapacity>::maxCapacity() const {
-	buffer.capacity()
+	buffer.capacity();
 }
