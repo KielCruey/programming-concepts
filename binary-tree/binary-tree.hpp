@@ -54,6 +54,7 @@ public:
 	void balance(t* data, int first, int last);
 
 protected:
+	BSTNode<t>* root; // first node in the tree
 	void clear(BSTNode<t>* node);
 	t* search(BSTNode<t>* node, const t& element) const;
 	void preorder(BSTNode<t>* node);
@@ -64,23 +65,4 @@ protected:
 	}
 };
 
-// ======== Stack ========
-template<class t>
-inline t Stack<t>::pop() {
-	t element =	std::stack<t>::top(); // grabs top element on stack
-	std::stack<t>::pop();
-	return element;
-}
-
-// ======== Queue ========
-template<class t>
-inline t Queue<t>::dequeue() {
-	t element = std::queue<t>::front(); // grabs front element on queue
-	std::queue<t>::pop();
-	return element;
-}
-
-template<class t>
-inline void Queue<t>::enqueue(const t& element) {
-	push(element);
-}
+#include "binary-tree.inl"
