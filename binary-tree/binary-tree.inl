@@ -74,3 +74,65 @@ template<class t>
 inline t* BST<t>::search(const t& element) const {
 	search(root, element);
 }
+
+template<class t>
+inline void BST<t>::breadthFirst() {
+	Queue<BSTNode<t>*> queue;
+	BSTNode<t>* node = root;
+
+	if (node != nullptr) {
+		queue.enqueue(node); // adds node to end of queue
+
+		while (!queue.empty()) {
+			node = queue.dequeue();
+			visit(node);
+
+			if (node->left != nullptr)
+				queue.enqueue(node->left);
+
+			if (node->right != nullptr)
+				queue.enqueue(node->right);
+		}
+	}
+}
+
+template<class t>
+inline t* BST<t>::search(BSTNode<t>* node, const t& element) const {
+	while (node != nullptr) {
+		if (element == node->key) // if element and node's data are the same
+			return &node->key; // return nodes content's address
+		else if (element < node->key)
+			node = node->left;
+		else
+			node = node->right;
+	}
+
+	return nullptr;
+}
+
+template<class t>
+inline void BST<t>::preorder(BSTNode<t>* node) {
+	if (node != nullptr) {
+		visit(node);
+		preorder(node->left);
+		preorder(node->right);
+	}
+}
+
+template<class t>
+inline void BST<t>::inorder(BSTNode<t>* node) {
+	if (node != nullptr) {
+		inorder(node->left);
+		visit(node);
+		inorder(node->right);
+	}
+}
+
+template<class t>
+inline void BST<t>::postorder(BSTNode<t>* node) {
+	if (node != nullptr) {
+		postorder(node->left);
+		postorder(node->right);
+		visit(node);
+	}
+}

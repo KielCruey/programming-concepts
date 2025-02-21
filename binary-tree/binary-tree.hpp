@@ -23,7 +23,7 @@ public:
 	BSTNode();
 	BSTNode(const t& element, BSTNode *left = nullptr, BSTNode *right = nullptr);
 
-	t key;
+	t key; // AKA data
 	BSTNode* left;
 	BSTNode* right;
 };
@@ -66,3 +66,4 @@ protected:
 };
 
 #include "binary-tree.inl"
+
