@@ -44,7 +44,7 @@ public:
 
 	void breadthFirst();
 	void iterativePreorder();
-	void iterativeIndorder();
+	void iterativeInorder();
 	void iterativePostorder();
 	void morrisInorder();
 	void insert(const t& element);
@@ -60,9 +60,7 @@ protected:
 	void preorder(BSTNode<t>* node);
 	void inorder(BSTNode<t>* node);
 	void postorder(BSTNode<t>* node);
-	virtual void visit(BSTNode<t>* node) {
-		std::cout << node->key << ' ';
-	}
+	virtual void visit(BSTNode<t>* node);
 };
 
 #include "binary-tree.inl"

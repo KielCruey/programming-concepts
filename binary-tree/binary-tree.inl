@@ -80,6 +80,7 @@ inline void BST<t>::breadthFirst() {
 	Queue<BSTNode<t>*> queue;
 	BSTNode<t>* node = root;
 
+	// check for a non-empty binary tree
 	if (node != nullptr) {
 		queue.enqueue(node); // adds node to end of queue
 
@@ -97,7 +98,86 @@ inline void BST<t>::breadthFirst() {
 }
 
 template<class t>
+inline void BST<t>::iterativePreorder() {
+	Stack<BSTNode<t>*> travStack;
+	BSTNode<t>* node = root;
+
+	// check for a non-empty binary tree
+	if (node != nullptr) {
+		travStack.push(node);
+
+		while (!travStack.empty()) {
+			node = travStack.pop(); // deletes top of stack
+			visit(node); // prints data's value
+
+			if (node->right != nullptr)
+				travStack.push(node->right);
+
+			if (node->left != nullptr)
+				travStack.push(node->left);				
+		}
+	}
+}
+
+template<class t>
+inline void BST<t>::iterativeInorder() {
+	Stack<BSTNode<t>*> travStack;
+	BSTNode<t>* node = root;
+
+	// checks for non-empty node
+	while (node != nullptr) {
+		while (node != nullptr) {
+			if (node->right)
+				travStack.push(node->right);
+
+			travStack.push(node);
+			node = node->left;
+		}
+
+		node = travStack.pop();
+
+		while (!travStack.empty() && node->right == nullptr) {
+			visit(node);
+			node = travStack.pop();
+		}
+
+		visit(node);
+
+		if (!travStack.empty())
+			node = travStack.pop();
+		else
+			node = nullptr;
+	}
+}
+
+template<class t>
+inline void BST<t>::iterativePostorder() {
+	Stack<BSTNode<t>*> travStack;
+	BSTNode<t>* node1 = root, * node2 = root;
+
+	// check for a non-empty binary tree
+	while (node1 != nullptr) {
+		for (; node1->left != nullptr; node1 = node1->left)
+			travStack.push(node1);
+
+		while (node1 != nullptr && (node1->right == nullptr || node1->right == node2)) {
+			visit(node1);
+			node1 = node2;
+
+			if (travStack.empty())
+				return;
+
+			node1 = travStack.pop();
+		}
+
+		travStack.push(node1);
+		node1 = node1->right;
+	}
+}
+
+template<class t>
 inline t* BST<t>::search(BSTNode<t>* node, const t& element) const {
+	// check for a non-empty node
 	while (node != nullptr) {
 		if (element == node->key) // if element and node's data are the same
 			return &node->key; // return nodes content's address
@@ -112,6 +192,7 @@ inline t* BST<t>::search(BSTNode<t>* node, const t& element) const {
 
 template<class t>
 inline void BST<t>::preorder(BSTNode<t>* node) {
+	// check for a non-empty node
 	if (node != nullptr) {
 		visit(node);
 		preorder(node->left);
@@ -121,6 +202,7 @@ inline void BST<t>::preorder(BSTNode<t>* node) {
 
 template<class t>
 inline void BST<t>::inorder(BSTNode<t>* node) {
+	// check for a non-empty node
 	if (node != nullptr) {
 		inorder(node->left);
 		visit(node);
@@ -130,9 +212,15 @@ inline void BST<t>::inorder(BSTNode<t>* node) {
 
 template<class t>
 inline void BST<t>::postorder(BSTNode<t>* node) {
+	// check for a non-empty node
 	if (node != nullptr) {
 		postorder(node->left);
 		postorder(node->right);
 		visit(node);
 	}
+}
+
+template<class t>
+inline void BST<t>::visit(BSTNode<t>* node) {
+	std::cout << node->key << ' ';
 }
