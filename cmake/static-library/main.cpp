@@ -4,7 +4,7 @@
 #include "functions.hpp"
 
 int main() {
-	Functions functions;
+	Functions<double> functions;
 
 	// testing all the static library functions
 	auto sum = functions.add(4.2, 8.33);
