@@ -174,10 +174,124 @@ inline void BST<t>::iterativePostorder() {
 		node1 = node1->right;
 	}
 }
+// algorithm an traverse the tree without using stack and recursion.
+// Goes to the left most node in the right subtree.
+template<class t>
+inline void BST<t>::morrisInorder() {
+	BSTNode<t>* node = root;
+	BSTNode<t>* tmp;
+
+	while (node != nullptr) {
+		if (node->left == nullptr) {
+			visit(node);
+			node = node->right;
+		}
+		else {
+			tmp = node->left;
+
+			while (tmp->right != nullptr && tmp->right != node)
+				tmp = tmp->right;
+
+			if (tmp->right == nullptr) {
+				tmp->right = node;
+				node = node->left;
+			}
+			else {
+				visit(node);
+				tmp->right = nullptr;
+				node = node->right;
+			}
+		}
+	}
+}
+
+template<class t>
+inline void BST<t>::insert(const t& element) {
+	BSTNode<t>* node = root;
+	BSTNode<t>* previous;
+
+	// checks for a non-empty node
+	while (node != nullptr) {
+		previous = node;
+
+		if (node->key < element)
+			node = node->right;
+		else
+			node = node->left;
+
+		// tree is empty
+		if (root == nullptr)
+			root = new BSTNode<t>(element);
+		else if (previous->key < element)
+			previous->right = new BSTNode<t>(element);
+		else
+			previous->left = new BSTNode<t>(element);
+	}
+}
+
+template<class t>
+inline void BST<t>::deleteByMerging(BSTNode<t>*& node) {
+	BSTNode<t>* tmp = node;
+
+	if (node != nullptr) {
+		if (!node->right) // doesn't have a right child
+			node = node->left;	// move to the left child
+		else if (node->left == nullptr) // doesn't have a left child
+			node = node->right; // move to the right child
+		// no left or right child then start merging
+		else {
+			tmp = node->left; // move left subtree
+
+			// keep on going down to the left most subtree's right node
+			while (tmp->right != nullptr)
+				tmp = tmp->right;
+
+			tmp->right = node->right;
+			tmp = node;
+			node = node->left;
+		}
+		
+		delete tmp;
+	}
+}
+
+template<class t>
+inline void BST<t>::findAndDeleteByMerging(const t& element) {
+	BSTNode<t>* node = root;
+	BSTNode<t>* previous = nullptr;
+
+	// non-empty node
+	while (node != nullptr) {
+		// if node is found, break from while loop
+		if (node->key == element) 
+			break;
+
+		previous = node;
+
+		// looks left or right childe depending on the current nodes value
+		if (node->key < element)
+			node = node->right;
+		else
+			node = node->left;
+	}
+
+	if (node != nullptr && node->key == element) {
+		if (node == root)
+			deleteByMerging(root);
+		else if (previous->left == node)
+			deleteByMerging(previous->left);
+		else
+			deleteByMerging(previous->right);
+	}
+	else if (root != nullptr)
+		std::cout << "key: " << element << " -- not in the tree\n"; \
+	else
+		std::cout << "the tree is empty\n";
+}
 
 template<class t>
 inline t* BST<t>::search(BSTNode<t>* node, const t& element) const {
-	// check for a non-empty node
+	// checks for a non-empty node
 	while (node != nullptr) {
 		if (element == node->key) // if element and node's data are the same
 			return &node->key; // return nodes content's address

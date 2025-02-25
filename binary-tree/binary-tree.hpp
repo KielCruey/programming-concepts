@@ -24,8 +24,8 @@ public:
 	BSTNode(const t& element, BSTNode *left = nullptr, BSTNode *right = nullptr);
 
 	t key; // AKA data
-	BSTNode* left;
-	BSTNode* right;
+	BSTNode<t>* left;
+	BSTNode<t>* right;
 };
 
 template<class t>
@@ -48,7 +48,7 @@ public:
 	void iterativePostorder();
 	void morrisInorder();
 	void insert(const t& element);
-	void deleteByMerging(BSTNode<t>*& element);
+	void deleteByMerging(BSTNode<t>*& node);
 	void findAndDeleteByMerging(const t& element);
 	void deleteByCoping(BSTNode<t>*& element);
 	void balance(t* data, int first, int last);
