@@ -47,10 +47,10 @@ public:
 	void iterativeInorder();
 	void iterativePostorder();
 	void morrisInorder();
-	void insert(const t& element);
-	void deleteByMerging(BSTNode<t>*& node);
-	void findAndDeleteByMerging(const t& element);
-	void deleteByCoping(BSTNode<t>*& element);
+	void insert(const t& element); // key based process
+	void deleteByMerging(BSTNode<t>*& node); // node based process
+	void findAndDeleteByMerging(const t& element); // key based process
+	void deleteByCoping(BSTNode<t>*& node); // node based process
 	void balance(t* data, int first, int last);
 
 protected:

@@ -290,6 +290,37 @@ inline void BST<t>::findAndDeleteByMerging(const t& element) {
 }
 
 template<class t>
+inline void BST<t>::deleteByCoping(BSTNode<t>*& node) {
+	BSTNode<t>* previous;
+	BSTNode<t>* tmp = node;
+
+	if (node->right == nullptr) // no right child node
+		node = node->left;
+	else if (node->left == nullptr) // no right child node
+		node = node->right;
+	// node has both children
+	else {
+		tmp = node->left;
+		previous = node;
+
+		// keep on moving to right node
+		while (tmp->right != nullptr) {
+			previous = tmp;
+			tmp = tmp->right;
+		}
+
+		node->key = tmp->key;
+
+		if (previous == node)
+			previous->left = tmp->left;
+		else
+			previous->right = tmp->left;
+	}
+
+	delete tmp;
+}
+
+template<class t>
 inline t* BST<t>::search(BSTNode<t>* node, const t& element) const {
 	// checks for a non-empty node
 	while (node != nullptr) {
