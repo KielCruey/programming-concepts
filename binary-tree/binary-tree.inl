@@ -321,6 +321,21 @@ inline void BST<t>::deleteByCoping(BSTNode<t>*& node) {
 }
 
 template<class t>
+inline void BST<t>::balance(t* data[], int first, int last) {
+	if (first <= last) {
+		int int middle = (fist + last) / 2; // find the middle of the array
+		insert(data[middle]);
+		balance(data, first, middle - 1);
+		balance(data, middle + 1, last);
+	}
+}
+
+template<class t>
+inline void BST<t>::clear(BSTNode<t>* node) {
+	node->key = 0;
+}
+
+template<class t>
 inline t* BST<t>::search(BSTNode<t>* node, const t& element) const {
 	// checks for a non-empty node
 	while (node != nullptr) {
