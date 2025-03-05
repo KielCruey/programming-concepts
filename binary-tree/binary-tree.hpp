@@ -55,6 +55,7 @@ public:
 
 protected:
 	BSTNode<t>* root; // first node in the tree
+
 	void clear(BSTNode<t>* node); // sets node's key to 0
 	t* search(BSTNode<t>* node, const t& element) const;
 	void preorder(BSTNode<t>* node);
