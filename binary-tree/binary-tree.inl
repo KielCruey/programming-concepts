@@ -33,11 +33,10 @@ inline BSTNode<t>::BSTNode(const t& element, BSTNode* left, BSTNode* right) {
 }
 
 // ======== BST ========
-
 template<class t>
-inline BST<t>::BST() {
-	root = nullptr;
-}
+inline BST<t>::BST(BSTNode<t>* node)
+	: root(node)
+{ }
 
 template<class t>
 inline BST<t>::~BST() {
@@ -62,17 +61,17 @@ inline void BST<t>::preorder(){
 
 template <class t>
 inline void BST<t>::inorder() {
-	inorder(root);
+	inorder(root); // call protected function
 }
 
 template<class t>
 inline void BST<t>::postorder() {
-	postorder(root);
+	postorder(root); // call protected function
 }
 
 template<class t>
 inline t* BST<t>::search(const t& element) const {
-	search(root, element);
+	return search(root, element); // recurively looks for the element in the tree
 }
 
 template<class t>
@@ -224,7 +223,7 @@ inline void BST<t>::insert(const t& element) {
 			root = new BSTNode<t>(element);
 		else if (previous->key < element)
 			previous->right = new BSTNode<t>(element);
-		else
+		else if (previous->key > element)
 			previous->left = new BSTNode<t>(element);
 	}
 }

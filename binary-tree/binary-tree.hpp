@@ -32,7 +32,7 @@ template<class t>
 class BST
 {
 public:
-	BST();
+	BST(BSTNode<t>* node = nullptr);
 	~BST();
 
 	void clear();
