@@ -1,5 +1,12 @@
 # Programming Concepts
 
+## Installing GoogleTest
+[Installing article](https://chamikaramendis.medium.com/a-comprehensive-guide-to-setting-up-google-test-gtest-and-google-mock-gmock-for-unit-testing-in-fc033e3b532d)
+
+[Setting up GoogleTest using MSVS](https://learn.microsoft.com/en-us/visualstudio/test/how-to-use-google-test-for-cpp?view=vs-2022)
+
+[Using GTest with Test Explorer](https://learn.microsoft.com/en-us/visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2022)
+
 # UML Diagrams
 General UML [tutorial](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-class-diagram-tutorial/) on the class diagrams.
 

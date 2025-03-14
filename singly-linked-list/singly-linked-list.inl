@@ -9,7 +9,7 @@ SLLNode<t>::SLLNode(t data, SLLNode<t>* next) :
 	data(data), next(next)
 { }
 
-// =============== SLLNode ===============
+// =============== SLList ===============
 template <class t>
 SLList<t>::SLList(SLLNode<t>* head, SLLNode<t>* tail) : 
 	head(head), tail(tail)
@@ -30,11 +30,28 @@ SLList<t>::~SLList() {
 	}
 }
 
-template <class t>
-bool SLList<t>::isEmpty() {
-	return head == nullptr;
+// ------ getters/setters ------
+template<class t>
+SLLNode<t>* SLList<t>::getHead() {
+	return head;
 }
 
+template<class t>
+SLLNode<t>* SLList<t>::getTail() {
+	return tail;
+}
+
+template<class t>
+void SLList<t>::setHead(SLLNode<t>* head){
+	this->head = head;
+}
+
+template<class t>
+void SLList<t>::setTail(SLLNode<t>* tail) {
+	this->tail = tail;
+}
+
+// ------ functions ------
 template <class t>
 void SLList<t>::addToHead(t data) {
 	SLLNode<t>* tmp = new SLLNode<t>(data);
@@ -60,12 +77,27 @@ void SLList<t>::addToTail(t data) {
 }
 
 template <class t>
+bool SLList<t>::isEmpty() const {
+	return head == nullptr;
+}
+
+template <class t>
+bool SLList<t>::isInList(t data) const {
+	SLLNode<t>* tmp;
+
+	// searches for the data in the list
+	for (tmp = head; tmp != nullptr && !(tmp->data == data); tmp = tmp->next);
+
+	return tmp != nullptr;
+}
+
+template <class t>
 // returns content from deleted head node
 t* SLList<t>::deleteFromHead() {
 	// list is not empty
 	if (!isEmpty())
 	{
-		int data = head->data; // creates new data for the delete node - it will be returned
+		t data = head->data; // creates new data for the delete node - it will be returned
 		SLLNode<t>* tmp = head;
 
 		// only one node in the list
@@ -87,7 +119,7 @@ t* SLList<t>::deleteFromTail() {
 	// edge condition -- list is empty
 	if (!isEmpty())
 	{
-		int data = tail->data;
+		t data = tail->data;
 
 		// only one node to delete
 		if (head == tail)
@@ -116,23 +148,29 @@ t* SLList<t>::deleteFromTail() {
 }
 
 template <class t>
-void SLList<t>::deleteSLLNode(t nodeData) {
+t* SLList<t>::deleteSLLNode(t nodeData) {
 	// if not a empty list
-	if (head != nullptr) {
-		// only one node in the list
+	if (!isEmpty()) {
+		t data;
+
+		// case #1 -- only one node in the list
 		if (head == tail && nodeData == head->data)
 		{
+			data = head->data;
+
 			delete head;
 			head = tail = nullptr;
 		}
-		// if data are happens to be head's data, but more than one node
+		// case #2 --  if data happens to be head's data, but more than one node
 		else if (nodeData == head->data)
 		{
+			data = head->data;
 			SLLNode<t>* tmp = head;
+			
 			head = head->next;
 			delete tmp;
 		}
-		// data is somewhere in the middle of the linked list
+		// case #3 --  data is somewhere in the middle of the linked list or tail
 		else
 		{
 			SLLNode<t>* current, * forward;
@@ -141,6 +179,8 @@ void SLList<t>::deleteSLLNode(t nodeData) {
 			for (current = head, forward = head->next;
 				forward != nullptr && !(forward->data == nodeData);
 				current = current->next, forward = forward->next);
+
+			data = forward->data; // forward is the
 
 			if (forward != nullptr)
 			{
@@ -153,15 +193,10 @@ void SLList<t>::deleteSLLNode(t nodeData) {
 				delete forward;
 			}
 		}
+
+		return &data;
 	}
-}
+	else
+		return nullptr;
 
-template <class t>
-bool SLList<t>::isInList(t data) const {
-	SLLNode<t>* tmp;
-
-	// searches for the data in the list
-	for (tmp = head; tmp != nullptr && !(tmp->data == data); tmp = tmp->next);
-
-	return tmp != nullptr;
 }

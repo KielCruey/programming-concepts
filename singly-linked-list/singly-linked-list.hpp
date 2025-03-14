@@ -17,13 +17,22 @@ public:
 	SLList(SLLNode<t>* head = nullptr, SLLNode<t>* tail = nullptr);
 	~SLList();
 
-	bool isEmpty();
+	// ====== getters/setters ======
+	SLLNode<t>* getHead();
+	SLLNode<t>* getTail();
+
+	void setHead(SLLNode<t>* head);
+	void setTail(SLLNode<t>* tail);
+
+	// ====== functions ======
 	void addToHead(t data);
 	void addToTail(t data);
+	bool isEmpty() const;
+	bool isInList(t data) const;
 	t* deleteFromHead(); // delete the head and return its data
 	t* deleteFromTail(); // delete the tail and return its data
-	void deleteSLLNode(t nodeData);
-	bool isInList(t data) const;
+	t* deleteSLLNode(t nodeData);
+	
 
 private:
 	SLLNode<t>* head;
