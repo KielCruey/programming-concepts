@@ -1,5 +1,0 @@
-﻿  linked-list-test.cpp
-C:\src\programming-concepts\singly-linked-list\singly-linked-list.inl(101,1): warning C4172: returning address of local variable or temporary: data
-C:\src\programming-concepts\singly-linked-list\singly-linked-list.inl(134,1): warning C4172: returning address of local variable or temporary: data
-C:\src\programming-concepts\singly-linked-list\singly-linked-list.inl(187,1): warning C4172: returning address of local variable or temporary: data
-  tests.vcxproj -> C:\src\leetcode-IDE\x64\Debug\tests.exe

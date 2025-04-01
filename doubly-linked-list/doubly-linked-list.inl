@@ -32,8 +32,38 @@ DLList<t>::~DLList() {
 }
 
 template<class t>
+DLLNode<t>* DLList<t>::getHead() {
+	return head;
+}
+
+template<class t>
+DLLNode<t>* DLList<t>::getTail() {
+	return tail;
+}
+
+template<class t>
+void DLList<t>::setHead(DLLNode<t>* head) {
+	this->head = head;
+}
+
+template<class t>
+void DLList<t>::setTail(DLLNode<t>* tail) {
+	this->tail = tail;
+}
+
+template<class t>
 bool DLList<t>::isEmpty() {
 	return head == nullptr;
+}
+
+template<class t>
+bool DLList<t>::isInList(t data) const {
+	DLLNode<t>* tmp;
+
+	// searches for the data in the list
+	for (tmp = head; tmp != nullptr && !(tmp->data == data); tmp = tmp->next);
+
+	return tmp != nullptr;
 }
 
 template<class t>
@@ -59,9 +89,8 @@ void DLList<t>::addToTail(const t& data)
 	if (tail != nullptr)
 	{
 		DLLNode<t>* tmp = new DLLNode<t>(data);
-
-		tail->next = tmp; // tail's next node is the new node
 		tmp->previous = tail; // new node's previous is "old" tail
+		tail->next = tmp; // tail's next node is the new node
 		tail = tmp; // "new" tail gets renamed to correct tail
 	}
 	// if empty, then tail and head are the same node
@@ -70,69 +99,28 @@ void DLList<t>::addToTail(const t& data)
 }
 
 template<class t>
-t* DLList<t>::deleteFromHead() {
-	// list is not empty
-	if (!isEmpty())
-	{
-		int data = head->data; // creates new data for the delete node - it will be returned
-		DLLNode<t>* tmp = head;
-
-		// only one node in the list
-		if (head == tail)
-			head = tail = nullptr;
-		else
-			head = head->next; // assigning head to next node
-
-		delete tmp;
-
-		return &data;
-	}
-	else
-		return nullptr;
-}
-
-template<class t>
-t* DLList<t>::deleteFromTail() {
-	// edge condition -- list is empty
-	if (!isEmpty())
-	{
-		int data = tail->data;
-
-		// only one node to delete
-		if (head == tail)
-		{
-			delete head;
-			head = tail = nullptr;
-		}
-		// more than one node in list
-		else
-		{
-			tail = tail->previous;
-			delete tail->next;
-			tail->next = nullptr;
-		}
-
-		return &data;
-	}
-	else
-		return nullptr;
-}
-
-template<class t>
-void DLList<t>::deleteDLLNode(t data) {
+t* DLList<t>::deleteDLLNode(t data) {
 	// if not a empty list
 	if (head != nullptr) {
+		t nodeData;
+
 		// only one head node in the list
 		if (head == tail && data == head->data)
 		{
+			nodeData = head->data;
 			delete head;
+
 			head = tail = nullptr;
 		}
 		// if data are happens to be head's data, but more than one node
 		else if (data == head->data)
 		{
 			DLLNode<t>* tmp = head;
+			nodeData = head->data;
+
 			head = head->next;
+			head->previous = nullptr;
+
 			delete tmp;
 		}
 		// data is somewhere in the middle of the linked list
@@ -145,6 +133,9 @@ void DLList<t>::deleteDLLNode(t data) {
 				forward != nullptr && !(forward->data == data);
 				current = current->next, forward = forward->next);
 
+			nodeData = forward->data;
+
+			// moves the links to different nodes
 			if (forward != nullptr)
 			{
 				DLLNode<t>* p;
@@ -166,15 +157,69 @@ void DLList<t>::deleteDLLNode(t data) {
 				delete forward;
 			}
 		}
+
+		return &nodeData;
 	}
+	else
+		return nullptr;
 }
 
 template<class t>
-bool DLList<t>::isInList(t data) const {
-	DLLNode<t>* tmp;
+t* DLList<t>::deleteFromHead() {
+	// list is not empty
+	if (!isEmpty())
+	{
+		t data; // creates new data for the delete node - it will be returned
 
-	// searches for the data in the list
-	for (tmp = head; tmp != nullptr && !(tmp->data == data); tmp = tmp->next);
+		// only one node in the list
+		if (head == tail) {
+			data = head->data;
+			delete head;
+			head = tail = nullptr;
+		}
+		else {
+			DLLNode<t>* tmp = head;
+			data = head->data;
 
-	return tmp != nullptr;
+			head = head->next; // assigning head to next node
+			head->previous = nullptr;
+
+			delete tmp;
+		}
+
+		return &data;
+	}
+	else
+		return nullptr;
+}
+
+template<class t>
+t* DLList<t>::deleteFromTail() {
+	// edge condition -- list is empty
+	if (!isEmpty())
+	{
+		t data;
+
+		// only one node to delete
+		if (head == tail) {
+			data = tail->data;
+			delete tail;
+			tail = head = nullptr;
+		}
+		// more than one node in list
+		else {
+			DLLNode<t>* tmp = tail;
+			data = tail->data;
+
+			tail = tmp->previous;
+			tail->next = nullptr;
+			tmp->previous = nullptr;
+
+			delete tmp;
+		}
+
+		return &data;
+	}
+	else
+		return nullptr;
 }
