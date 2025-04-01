@@ -1,6 +1,5 @@
 #include "../singly-linked-list/singly-linked-list.hpp"
 
-
 class SLListTest : public testing::Test
 {
 public:

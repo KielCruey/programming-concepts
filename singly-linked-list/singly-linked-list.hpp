@@ -33,7 +33,6 @@ public:
 	t* deleteFromTail(); // delete the tail and return its data
 	t* deleteSLLNode(t nodeData);
 	
-
 private:
 	SLLNode<t>* head;
 	SLLNode<t>* tail;
