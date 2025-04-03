@@ -32,8 +32,38 @@ DLList<t>::~DLList() {
 }
 
 template<class t>
+DLLNode<t>* DLList<t>::getHead() {
+	return head;
+}
+
+template<class t>
+DLLNode<t>* DLList<t>::getTail() {
+	return tail;
+}
+
+template<class t>
+void DLList<t>::setHead(DLLNode<t>* head) {
+	this->head = head;
+}
+
+template<class t>
+void DLList<t>::setTail(DLLNode<t>* tail) {
+	this->tail = tail;
+}
+
+template<class t>
 bool DLList<t>::isEmpty() {
 	return head == nullptr;
+}
+
+template<class t>
+bool DLList<t>::isInList(t data) const {
+	DLLNode<t>* tmp;
+
+	// searches for the data in the list
+	for (tmp = head; tmp != nullptr && !(tmp->data == data); tmp = tmp->next);
+
+	return tmp != nullptr;
 }
 
 template<class t>
@@ -67,55 +97,6 @@ void DLList<t>::addToTail(const t& data)
 	// if empty, then tail and head are the same node
 	else
 		head = tail = new DLLNode<t>(data);
-}
-
-template<class t>
-t* DLList<t>::deleteFromHead() {
-	// list is not empty
-	if (!isEmpty())
-	{
-		int data = head->data; // creates new data for the delete node - it will be returned
-		DLLNode<t>* tmp = head;
-
-		// only one node in the list
-		if (head == tail)
-			head = tail = nullptr;
-		else
-			head = head->next; // assigning head to next node
-
-		delete tmp;
-
-		return &data;
-	}
-	else
-		return nullptr;
-}
-
-template<class t>
-t* DLList<t>::deleteFromTail() {
-	// edge condition -- list is empty
-	if (!isEmpty())
-	{
-		int data = tail->data;
-
-		// only one node to delete
-		if (head == tail)
-		{
-			delete head;
-			head = tail = nullptr;
-		}
-		// more than one node in list
-		else
-		{
-			tail = tail->previous;
-			delete tail->next;
-			tail->next = nullptr;
-		}
-
-		return &data;
-	}
-	else
-		return nullptr;
 }
 
 template<class t>
@@ -170,11 +151,50 @@ void DLList<t>::deleteDLLNode(t data) {
 }
 
 template<class t>
-bool DLList<t>::isInList(t data) const {
-	DLLNode<t>* tmp;
+t* DLList<t>::deleteFromHead() {
+	// list is not empty
+	if (!isEmpty())
+	{
+		int data = head->data; // creates new data for the delete node - it will be returned
+		DLLNode<t>* tmp = head;
 
-	// searches for the data in the list
-	for (tmp = head; tmp != nullptr && !(tmp->data == data); tmp = tmp->next);
+		// only one node in the list
+		if (head == tail)
+			head = tail = nullptr;
+		else
+			head = head->next; // assigning head to next node
 
-	return tmp != nullptr;
+		delete tmp;
+
+		return &data;
+	}
+	else
+		return nullptr;
+}
+
+template<class t>
+t* DLList<t>::deleteFromTail() {
+	// edge condition -- list is empty
+	if (!isEmpty())
+	{
+		int data = tail->data;
+
+		// only one node to delete
+		if (head == tail)
+		{
+			delete head;
+			head = tail = nullptr;
+		}
+		// more than one node in list
+		else
+		{
+			tail = tail->previous;
+			delete tail->next;
+			tail->next = nullptr;
+		}
+
+		return &data;
+	}
+	else
+		return nullptr;
 }

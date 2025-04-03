@@ -27,15 +27,13 @@ void SLListTest::TearDown() {
 // ===========================
 // ------ isEmpty() ------
 TEST_F(SLListTest, IsEmpty_EmptyList) {
-	// case #1 -- empty list
-	EXPECT_EQ(getList()->isEmpty(), true);
+	EXPECT_TRUE(getList()->isEmpty());
 }
 
 TEST_F(SLListTest, IsEmpty_NonEmptyList) {
-	// case #2 -- non-empty list
 	getList()->addToHead(1);
 
-	EXPECT_EQ(getList()->isEmpty(), false);
+	EXPECT_FALSE(getList()->isEmpty());
 }
 
 // ------ addToHead() ------
@@ -186,11 +184,11 @@ TEST_F(SLListTest, DeleteSLLNode_MoreThanOneElement_DeleteTail) {
 TEST_F(SLListTest, IsInList_NoElement) {
 	getList()->addToHead(10);
 
-	EXPECT_EQ(getList()->isInList(0), false);
+	EXPECT_FALSE(getList()->isInList(0));
 }
 
-TEST_F(SLListTest, IsInList_YesElement) {
+TEST_F(SLListTest, IsInList_ElementFound) {
 	getList()->addToHead(10);
 
-	EXPECT_EQ(getList()->isInList(10), true);
+	EXPECT_TRUE(getList()->isInList(10));
 }

@@ -1,5 +1,6 @@
 #include "../singly-linked-list/singly-linked-list.hpp"
 
+// test fixture
 class SLListTest : public testing::Test
 {
 public:
