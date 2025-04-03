@@ -103,13 +103,16 @@ template<class t>
 t* DLList<t>::deleteDLLNode(t data) {
 	// if not a empty list
 	if (head != nullptr) {
+
+		t* data;
 		// only one head node in the list
 		if (head == tail && data == head->data)
 		{
+			DLLNode<t>* tmp = head;
 			delete head;
 			head = tail = nullptr;
 			
-			return nullptr;
+			return tmp;
 		}
 		// if data are happens to be head's data, but more than one node
 		else if (data == head->data)
@@ -117,6 +120,8 @@ t* DLList<t>::deleteDLLNode(t data) {
 			DLLNode<t>* tmp = head;
 			head = head->next;
 			delete tmp;
+
+
 		}
 		// data is somewhere in the middle of the linked list
 		else
@@ -159,7 +164,7 @@ t* DLList<t>::deleteFromHead() {
 	// list is not empty
 	if (!isEmpty())
 	{
-		int data = head->data; // creates new data for the delete node - it will be returned
+		t data = head->data; // creates new data for the delete node - it will be returned
 		DLLNode<t>* tmp = head;
 
 		// only one node in the list
@@ -181,7 +186,7 @@ t* DLList<t>::deleteFromTail() {
 	// edge condition -- list is empty
 	if (!isEmpty())
 	{
-		int data = tail->data;
+		t data = tail->data;
 
 		// only one node to delete
 		if (head == tail)

@@ -109,8 +109,6 @@ TEST_F(DLListTest, AddToTail_NonNullList) {
 	getList()->addToTail(0);
 	auto node3 = getList()->getTail();
 
-	auto node = new DLLNode<int>(2);
-
 	// ===== list tests =====
 	EXPECT_NE(getList()->getTail(), getList()->getHead());
 
@@ -126,4 +124,20 @@ TEST_F(DLListTest, AddToTail_NonNullList) {
 	EXPECT_EQ(node3->previous, node2); // node3's previous link
 	EXPECT_EQ(node3->next, nullptr); // node3's next link
 	EXPECT_EQ(node3->data, 0); // node2's data
+}
+
+// ------ deleteDLLNode() ------
+TEST_F(DLListTest, DeleteDLLNode_NullList) {
+	EXPECT_EQ(getList()->deleteDLLNode(2), nullptr);
+}
+
+TEST_F(DLListTest, DeleteDLLNode_OnlyOneNode) {
+	getList()->addToHead(3);
+	int nodeData = getList()->getHead()->data;
+
+	int* functionReturnValue = getList()->deleteDLLNode(3);
+	//int pValue = *functionReturnValue;
+
+	//EXPECT_EQ(getList()->deleteDLLNode(3), &node->data);
+	//EXPECT_EQ(pValue, nodeData);
 }
