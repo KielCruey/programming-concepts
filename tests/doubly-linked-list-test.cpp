@@ -110,7 +110,7 @@ TEST_F(DLListTest, AddToTail_NonNullList) {
 	auto node3 = getList()->getTail();
 
 	// ===== list tests =====
-	EXPECT_NE(getList()->getTail(), getList()->getHead());
+	EXPECT_NE(getList()->getTail(), getList()->getHead()); // not the same nodes
 
 	// ===== node tests =====
 	EXPECT_EQ(node1->previous, nullptr); // node1's previous link
@@ -126,18 +126,55 @@ TEST_F(DLListTest, AddToTail_NonNullList) {
 	EXPECT_EQ(node3->data, 0); // node2's data
 }
 
+
 // ------ deleteDLLNode() ------
 TEST_F(DLListTest, DeleteDLLNode_NullList) {
 	EXPECT_EQ(getList()->deleteDLLNode(2), nullptr);
 }
-
+/*
 TEST_F(DLListTest, DeleteDLLNode_OnlyOneNode) {
 	getList()->addToHead(3);
-	int nodeData = getList()->getHead()->data;
+	auto nodeValue = getList()->getHead()->data;
+	auto deletedValue = getList()->deleteDLLNode(3);
 
-	int* functionReturnValue = getList()->deleteDLLNode(3);
-	//int pValue = *functionReturnValue;
+	auto test = new DLLNode<int>(9);
 
-	//EXPECT_EQ(getList()->deleteDLLNode(3), &node->data);
-	//EXPECT_EQ(pValue, nodeData);
+	EXPECT_EQ(deletedValue, nodeValue);
 }
+*/
+
+// ------ deleteFromHead() ------
+TEST_F(DLListTest, DeleteFromHead_NullList) {
+	EXPECT_EQ(getList()->deleteFromHead(), nullptr);
+}
+
+TEST_F(DLListTest, DeleteFromHead_OnlyOneElement) {
+	getList()->addToHead(1);
+	auto node = getList()->getHead();
+	auto nodeValue = getList()->getHead()->data;
+	auto deletedValue = *getList()->deleteFromHead();
+
+	// ===== list tests =====
+	EXPECT_EQ(getList()->getHead(), nullptr);
+	EXPECT_EQ(getList()->getTail(), nullptr);
+
+	// ===== node tests =====
+	EXPECT_EQ(deletedValue, nodeValue); // deleted nodes value
+	EXPECT_EQ(node->previous, nullptr); // previous link
+	EXPECT_EQ(node->next, nullptr); // next link
+}
+
+/*
+TEST_F(DLListTest, DeleteFromHead_MoreThenOneElement) {
+	getList()->addToHead(3);
+	getList()->addToHead(2);
+	getList()->addToHead(1);
+
+	auto test = new DLLNode<int>(9);
+
+	auto nodeValue = getList()->getHead()->data;
+	auto deletedValue = *getList()->deleteFromHead();
+	
+	EXPECT_EQ(deletedValue, test->data);
+}
+*/
