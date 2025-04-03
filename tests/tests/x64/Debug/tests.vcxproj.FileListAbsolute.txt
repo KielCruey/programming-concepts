@@ -1,3 +1,0 @@
-C:\src\programming-concepts\tests\x64\Debug\gtest.pdb
-C:\src\programming-concepts\tests\x64\Debug\gtest_main.pdb
-C:\src\programming-concepts\tests\tests\x64\Debug\tests.vcxproj.Up2Date

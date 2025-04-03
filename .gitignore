@@ -1,2 +1,5 @@
 # ignore folders
 build/
+
+tests/tests
+tests/packages
