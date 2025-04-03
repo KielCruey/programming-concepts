@@ -30,7 +30,7 @@ public:
 	bool isInList(t data) const;
 	void addToHead(const t& data);
 	void addToTail(const t& data);
-	void deleteDLLNode(t data);
+	t* deleteDLLNode(t data);
 	t* deleteFromHead(); // delete the head and return its data
 	t* deleteFromTail(); // delete the tail and return its data
 	

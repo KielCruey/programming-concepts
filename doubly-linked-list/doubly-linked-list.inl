@@ -100,7 +100,7 @@ void DLList<t>::addToTail(const t& data)
 }
 
 template<class t>
-void DLList<t>::deleteDLLNode(t data) {
+t* DLList<t>::deleteDLLNode(t data) {
 	// if not a empty list
 	if (head != nullptr) {
 		// only one head node in the list
@@ -108,6 +108,8 @@ void DLList<t>::deleteDLLNode(t data) {
 		{
 			delete head;
 			head = tail = nullptr;
+			
+			return nullptr;
 		}
 		// if data are happens to be head's data, but more than one node
 		else if (data == head->data)
@@ -148,6 +150,8 @@ void DLList<t>::deleteDLLNode(t data) {
 			}
 		}
 	}
+	else
+		return nullptr;
 }
 
 template<class t>
