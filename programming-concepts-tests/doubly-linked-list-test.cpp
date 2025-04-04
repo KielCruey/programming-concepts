@@ -131,17 +131,48 @@ TEST_F(DLListTest, AddToTail_NonNullList) {
 TEST_F(DLListTest, DeleteDLLNode_NullList) {
 	EXPECT_EQ(getList()->deleteDLLNode(2), nullptr);
 }
-/*
+
 TEST_F(DLListTest, DeleteDLLNode_OnlyOneNode) {
 	getList()->addToHead(3);
 	auto nodeValue = getList()->getHead()->data;
-	auto deletedValue = getList()->deleteDLLNode(3);
+	auto deletedValue = *getList()->deleteDLLNode(3);
 
-	auto test = new DLLNode<int>(9);
+	// ===== list tests =====
+	EXPECT_EQ(getList()->getHead(), nullptr);
+	EXPECT_EQ(getList()->getTail(), nullptr);
 
-	EXPECT_EQ(deletedValue, nodeValue);
+	// ===== node tests =====
+	EXPECT_EQ(deletedValue, nodeValue); // node's data
 }
-*/
+
+TEST_F(DLListTest, DeleteDLLNode_MoreThanOneNode_DeleteHead) {
+	getList()->addToHead(3);
+	auto node3 = getList()->getHead();
+	getList()->addToHead(2);
+	auto node2 = getList()->getHead();
+	getList()->addToHead(1);
+	auto node1 = getList()->getHead();
+	auto deletedValue = *getList()->deleteDLLNode(1);
+
+	auto node = new DLLNode<int>(9);
+
+	// ===== list tests =====
+	EXPECT_EQ(getList()->getHead(), node2);
+	EXPECT_EQ(getList()->getTail(), node3);
+
+	// ===== list tests =====
+	EXPECT_EQ(deletedValue, 1);
+
+	EXPECT_EQ(getList()->getHead()->previous, nullptr);
+	EXPECT_EQ(getList()->getHead()->next, node3);
+	
+	EXPECT_EQ(getList()->getTail()->previous, node2);
+	EXPECT_EQ(getList()->getTail()->next, nullptr);
+}
+
+
+
+
 
 // ------ deleteFromHead() ------
 TEST_F(DLListTest, DeleteFromHead_NullList) {

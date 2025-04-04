@@ -117,10 +117,12 @@ t* DLList<t>::deleteDLLNode(t data) {
 		else if (data == head->data)
 		{
 			DLLNode<t>* tmp = head;
-			delete tmp;
+			nodeData = head->data;
 
 			head = head->next;
 			head->previous = nullptr;
+
+			delete tmp;
 		}
 		// data is somewhere in the middle of the linked list
 		else
