@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{c9fcd669-0691-4942-8e1b-082c642715c3}</ProjectGuid>
+    <ProjectGuid>{3628696c-9a36-4708-8448-e115151ffc6f}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <ConfigurationType>Application</ConfigurationType>
@@ -97,18 +97,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="doubly-linked-list-test.hpp" />
-    <ClInclude Include="singly-linked-list-test.hpp" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="singly-linked-list-test.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="doubly-linked-list-test.cpp" />
-    <ClCompile Include="singly-linked-list-test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="singly-linked-list-test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

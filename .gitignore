@@ -1,5 +1,6 @@
 # ignore folders
 build/
 
-tests/tests
-tests/packages
+programming-concepts-tests/packages/
+programming-concepts-tests/programm.3628696c/
+programming-concepts-tests/x64/
