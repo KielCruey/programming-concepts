@@ -134,7 +134,7 @@ t* DLList<t>::deleteDLLNode(t data) {
 				forward != nullptr && !(forward->data == data);
 				current = current->next, forward = forward->next);
 
-			//nodeData = forward->data;
+			nodeData = forward->data;
 
 			// moves the links to different nodes
 			if (forward != nullptr)
@@ -170,15 +170,23 @@ t* DLList<t>::deleteFromHead() {
 	// list is not empty
 	if (!isEmpty())
 	{
-		t data = head->data; // creates new data for the delete node - it will be returned
+		t data; // creates new data for the delete node - it will be returned
 
 		// only one node in the list
-		if (head == tail)
+		if (head == tail) {
+			data = head->data;
+			delete head;
 			head = tail = nullptr;
-		else
-			head = head->next; // assigning head to next node
+		}
+		else {
+			DLLNode<t>* tmp = head;
+			data = head->data;
 
-		delete head;
+			head = head->next; // assigning head to next node
+			head->previous = nullptr;
+
+			delete tmp;
+		}
 
 		return &data;
 	}
