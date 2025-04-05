@@ -25,7 +25,7 @@ void DLListTest::setList(DLList<int>* list) {
 // ===== DLList Confirms =====
 // ===========================
 
-// ------ isEmpty() ------
+// ========= isEmpty() =========
 TEST_F(DLListTest, IsEmpty_EmptyList) {
 	EXPECT_TRUE(getList()->isEmpty());
 }
@@ -36,7 +36,7 @@ TEST_F(DLListTest, IsEmpty_NonEmptyList) {
 	EXPECT_FALSE(getList()->isEmpty());
 }
 
-// ------ isInList() ------
+// ========= isInList() =========
 TEST_F(DLListTest, IsInList_NoElement) {
 	EXPECT_FALSE(getList()->isInList(2));
 }
@@ -47,7 +47,7 @@ TEST_F(DLListTest, IsInList_ElementFound) {
 	EXPECT_TRUE(getList()->isInList(2));
 }
 
-// ------ addToHead() ------
+// ========= addToHead() =========
 TEST_F(DLListTest, AddToHead_NullList) {
 	getList()->addToHead(2);
 
@@ -87,7 +87,7 @@ TEST_F(DLListTest, AddToHead_NonNullList) {
 	EXPECT_EQ(node3->data, 2); // node3's data
 }
 
-// ------ addToTail() ------
+// ========= addToTail() =========
 TEST_F(DLListTest, AddToTail_NullList) {
 	getList()->addToTail(2);
 	auto node1 = getList()->getTail();
@@ -126,7 +126,7 @@ TEST_F(DLListTest, AddToTail_NonNullList) {
 	EXPECT_EQ(node3->data, 0); // node2's data
 }
 
-// ------ deleteDLLNode() ------
+// ========= deleteDLLNode() =========
 TEST_F(DLListTest, DeleteDLLNode_NullList) {
 	EXPECT_EQ(getList()->deleteDLLNode(2), nullptr);
 }
@@ -221,11 +221,10 @@ TEST_F(DLListTest, DeleteDLLNode_DeleteTheTail) {
 	EXPECT_EQ(node2->data, 2); // node2's data
 }
 
-// ------ deleteFromHead() ------
+// ========= deleteFromHead() =========
 TEST_F(DLListTest, DeleteFromHead_NullList) {
 	EXPECT_EQ(getList()->deleteFromHead(), nullptr);
 
-	auto test = new DLLNode<int>(9);
 	// ===== list tests =====
 	EXPECT_EQ(getList()->getHead(), nullptr);
 	EXPECT_EQ(getList()->getTail(), nullptr);
@@ -234,7 +233,6 @@ TEST_F(DLListTest, DeleteFromHead_NullList) {
 TEST_F(DLListTest, DeleteFromHead_OnlyOneElement) {
 	getList()->addToHead(1);
 	auto node = getList()->getHead();
-	auto nodeValue = getList()->getHead()->data;
 
 	auto deletedValue = *getList()->deleteFromHead();
 
@@ -243,7 +241,7 @@ TEST_F(DLListTest, DeleteFromHead_OnlyOneElement) {
 	EXPECT_EQ(getList()->getTail(), nullptr);
 
 	// ===== node tests =====
-	EXPECT_EQ(deletedValue, nodeValue); // deleted nodes value
+	EXPECT_EQ(deletedValue, 1); // deleted nodes value
 }
 
 TEST_F(DLListTest, DeleteFromHead_MoreThenOneElement) {
@@ -255,8 +253,6 @@ TEST_F(DLListTest, DeleteFromHead_MoreThenOneElement) {
 	auto node1 = getList()->getHead();;
 	
 	auto deletedValue = *getList()->deleteFromHead();
-
-	auto test = new DLLNode<int>(9);
 	
 	// ===== list tests =====
 	EXPECT_EQ(getList()->getHead(), node2);
@@ -271,4 +267,52 @@ TEST_F(DLListTest, DeleteFromHead_MoreThenOneElement) {
 	EXPECT_EQ(node3->previous, node2); // node3's previous link
 	EXPECT_EQ(node3->next, nullptr); // node3's next link
 	EXPECT_EQ(node3->data, 3); // node3's data
+}
+
+// ========= deleteFromTail() =========
+TEST_F(DLListTest, DeleteFromTail_NullList) {
+	auto node = new DLLNode<int>(9);
+
+	EXPECT_EQ(getList()->deleteFromTail(), nullptr);
+
+	// ===== list tests =====
+	EXPECT_EQ(getList()->getHead(), nullptr);
+	EXPECT_EQ(getList()->getTail(), nullptr);
+}
+
+TEST_F(DLListTest, DeleteFromTail_OnlyOneElement) {
+	getList()->addToTail(1);
+	auto deletedValue = *getList()->deleteFromTail();
+
+	// ===== list tests =====
+	EXPECT_EQ(getList()->getHead(), nullptr);
+	EXPECT_EQ(getList()->getTail(), nullptr);
+
+	// ===== node tests =====
+	EXPECT_EQ(deletedValue, 1);
+}
+
+TEST_F(DLListTest, DeleteFromTail_MoreThenOneElement) {
+	getList()->addToTail(3);
+	auto node3 = getList()->getTail();
+	getList()->addToTail(2);
+	auto node2 = getList()->getTail();
+	getList()->addToTail(1);
+	auto node1 = getList()->getTail();;
+
+	auto deletedValue = *getList()->deleteFromTail();
+
+	// ===== list tests =====
+	EXPECT_EQ(deletedValue, 333);
+
+	// ===== node tests =====
+	//EXPECT_EQ(deletedValue, 1);
+
+	//EXPECT_EQ(node2->previous, nullptr); // node2's previous link
+	//EXPECT_EQ(node2->next, node3); // node2's next link
+	//EXPECT_EQ(node2->data, 2); // node2's value
+
+	//EXPECT_EQ(node3->previous, node2); // node3's previous link
+	//EXPECT_EQ(node3->next, nullptr); // node3's next link
+	//EXPECT_EQ(node3->data, 3); // node3's data
 }

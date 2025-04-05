@@ -89,9 +89,8 @@ void DLList<t>::addToTail(const t& data)
 	if (tail != nullptr)
 	{
 		DLLNode<t>* tmp = new DLLNode<t>(data);
-
-		tail->next = tmp; // tail's next node is the new node
 		tmp->previous = tail; // new node's previous is "old" tail
+		tail->next = tmp; // tail's next node is the new node
 		tail = tmp; // "new" tail gets renamed to correct tail
 	}
 	// if empty, then tail and head are the same node
@@ -199,20 +198,23 @@ t* DLList<t>::deleteFromTail() {
 	// edge condition -- list is empty
 	if (!isEmpty())
 	{
-		t data = tail->data;
+		t data;
 
 		// only one node to delete
-		if (head == tail)
-		{
-			delete head;
-			head = tail = nullptr;
+		if (head == tail) {
+			data = tail->data;
+			delete tail;
+			tail = head = nullptr;
 		}
 		// more than one node in list
-		else
-		{
+		else {
+			DLLNode<t>* tmp = tail;
+			data = tail->data;
+
 			tail = tail->previous;
-			delete tail->next;
 			tail->next = nullptr;
+
+			delete tail;
 		}
 
 		return &data;
