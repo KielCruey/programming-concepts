@@ -17,6 +17,9 @@ public:
 	SCLList(SCLLNode<t>* current = nullptr);
 	~SCLList();
 
+	SCLList<t>* getCurrent() const;
+	void setCurrent(SCLList<t>* current);
+
 	bool isEmpty();
 	void addToHead(t data);
 	void addToTail(const t& data);

@@ -25,11 +25,28 @@ SCLList<t>::~SCLList() {
 	for (SCLLNode<t>* p; !isEmpty();)
 	{
 		// deleting from the tail first, then cycling to the next node until list is empty
-		p = current->next;
-		delete current;
-		current = p;
+		if (current->next != current) {
+			p = current->next;
+			delete current;
+		}
+		else
+		{
+			delete current;
+			current = nullptr;
+		}
 	}
 }
+
+template <class t>
+SCLList<t>* SCLList<t>::getCurrent() const {
+	return this->current;
+}
+
+template <class t>
+void SCLList<t>::setCurrent(SCLList<t>* current) {
+	this->current = current;
+}
+
 
 template<class t>
 bool SCLList<t>::isEmpty() {
@@ -44,7 +61,7 @@ void SCLList<t>::addToHead(t data) {
 	if (current == nullptr)
 	{
 		current = tmp;
-		current->next = current; // circular part
+		current->next = current; // circular part -- points to itself
 	}	
 	else
 	{
