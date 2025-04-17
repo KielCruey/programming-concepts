@@ -5,7 +5,7 @@ SCLLNode<t>::SCLLNode() :
 { }
 
 template<class t>
-SCLLNode<t>::SCLLNode(t data, SCLLNode<t>* last) :
+SCLLNode<t>::SCLLNode(t data, SCLLNode<t>* next) :
 	data(data), next(next)
 { }
 
@@ -21,32 +21,29 @@ SCLList<t>::~SCLList() {
 	if (isEmpty())
 		return;
 
-	// deletes every node in list
-	for (SCLLNode<t>* p; !isEmpty();)
-	{
-		// deleting from the tail first, then cycling to the next node until list is empty
-		if (current->next != current) {
-			p = current->next;
-			delete current;
-		}
-		else
-		{
-			delete current;
-			current = nullptr;
-		}
+	// finds last node
+	SCLLNode<t>* lastNode;
+
+	for (lastNode = current; lastNode->next != current; lastNode = lastNode->next);
+	lastNode->next = nullptr; // makes singly circular linked list into a singly linked list
+	
+	// deletes every node in list, then cycling to the next node until list is empty
+	for (SCLLNode<t>* frontNode; !isEmpty();) {
+		frontNode = current;
+		current = frontNode->next;
+		delete frontNode;
 	}
 }
 
 template <class t>
-SCLList<t>* SCLList<t>::getCurrent() const {
+SCLLNode<t>* SCLList<t>::getCurrent() {
 	return this->current;
 }
 
 template <class t>
-void SCLList<t>::setCurrent(SCLList<t>* current) {
+void SCLList<t>::setCurrent(SCLLNode<t>* current) {
 	this->current = current;
 }
-
 
 template<class t>
 bool SCLList<t>::isEmpty() {
@@ -58,15 +55,16 @@ void SCLList<t>::addToHead(t data) {
 	SCLLNode<t>* tmp = new SCLLNode<t>(data);
 
 	// no nodes in the list
-	if (current == nullptr)
-	{
+	if (current == nullptr) {
 		current = tmp;
 		current->next = current; // circular part -- points to itself
 	}	
-	else
-	{
-		tmp->next = current->next;
+	else {
+		SCLLNode<t>* tmpCurrent = current;
+
 		current->next = tmp;
+		tmp->next = current;
+		current = tmp;
 	}
 }
 
@@ -75,13 +73,11 @@ void SCLList<t>::addToTail(const t& data) {
 	SCLLNode<t>* tmp = new SCLLNode<t>(data);
 
 	// no nodes in the list
-	if (current == nullptr)
-	{
+	if (current == nullptr)	{
 		current = tmp;
 		current->next = current; // circular part
 	}
-	else
-	{
+	else {
 		tmp->next = current->next;
 		current->next = tmp;
 		current = tmp;

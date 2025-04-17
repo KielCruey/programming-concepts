@@ -17,9 +17,11 @@ public:
 	SCLList(SCLLNode<t>* current = nullptr);
 	~SCLList();
 
-	SCLList<t>* getCurrent() const;
-	void setCurrent(SCLList<t>* current);
+	// ----- getters/setters -----
+	SCLLNode<t>* getCurrent();
+	void setCurrent(SCLLNode<t>* current);
 
+	// ----- functions -----
 	bool isEmpty();
 	void addToHead(t data);
 	void addToTail(const t& data);

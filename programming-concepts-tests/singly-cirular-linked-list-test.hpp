@@ -7,7 +7,7 @@ public:
 	SCLLTest(SCLList<int>* list = nullptr);
 	~SCLLTest() = default;
 
-	SCLList<int>* getList() const;
+	SCLList<int>* getList();
 	void setList(SCLList<int>* list);
 
 protected:

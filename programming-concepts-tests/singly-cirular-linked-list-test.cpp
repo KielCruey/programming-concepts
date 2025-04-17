@@ -7,7 +7,7 @@ SCLLTest::SCLLTest(SCLList<int>* list) :
 	list(list)
 { }
 
-SCLList<int>* SCLLTest::getList() const {
+SCLList<int>* SCLLTest::getList() {
 	return this->list;
 }
 
@@ -41,7 +41,14 @@ TEST_F(SCLLTest, AddToHead_NullList) {
 	getList()->addToHead(1);
 	auto node1 = getList()->getCurrent();
 
-	auto node = new SCLLNode<int>(2);
+	EXPECT_EQ(getList()->getCurrent(), node1);
+}
 
-	EXPECT_EQ(getList()->getCurrent(), node);
+TEST_F(SCLLTest, AddToHead_OneElement) {
+	getList()->addToHead(1);
+	auto node1 = getList()->getCurrent();
+	getList()->addToHead(2);
+	auto node2 = getList()->getCurrent();
+
+	EXPECT_EQ(node2, nullptr);
 }
