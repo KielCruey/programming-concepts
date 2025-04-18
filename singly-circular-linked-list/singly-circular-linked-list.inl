@@ -60,11 +60,12 @@ void SCLList<t>::addToHead(t data) {
 		current->next = current; // circular part -- points to itself
 	}	
 	else {
-		SCLLNode<t>* tmpCurrent = current;
+		SCLLNode<t>* lastNode;
+		for (lastNode = current; lastNode->next != current; lastNode = lastNode->next);
 
-		current->next = tmp;
+		lastNode->next = tmp; // makes singly circular linked list into a singly linked list
 		tmp->next = current;
-		current = tmp;
+		current = tmp; // new current node reference
 	}
 }
 
@@ -78,9 +79,11 @@ void SCLList<t>::addToTail(const t& data) {
 		current->next = current; // circular part
 	}
 	else {
-		tmp->next = current->next;
-		current->next = tmp;
-		current = tmp;
+		SCLLNode<t>* lastNode;
+		for (lastNode = current; lastNode->next != current; lastNode = lastNode->next);
+
+		lastNode->next = tmp;
+		tmp->next = current;
 	}
 }
 
@@ -93,15 +96,14 @@ t* SCLList<t>::deleteFromHead() {
 	t data;
 
 	// checks if only one node in list
-	if (current == current->next)
-	{
+	if (current == current->next) {
 		data = current->data;
 		delete current;
 	}
 	// 2 or more nodes in list
-	else
-	{
+	else {
 		SCLLNode<t>* tmp = current->next;
+
 		data = tmp->data;
 		current->next = tmp->next;
 		delete tmp;
