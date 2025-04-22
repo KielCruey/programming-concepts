@@ -24,12 +24,17 @@ SCLList<t>::~SCLList() {
 	// finds last node
 	SCLLNode<t>* lastNode;
 
-	for (lastNode = current; lastNode->next != current; lastNode = lastNode->next);
-	lastNode->next = nullptr; // makes singly circular linked list into a singly linked list
-	
+	// only once node pointing it itself
+	if (current->next = current) {
+		lastNode = current;
+	}
+	else {
+		for (lastNode = current; lastNode != nullptr && lastNode->next != current; lastNode = lastNode->next);
+		lastNode->next = nullptr; // makes singly circular linked list into a singly linked list
+	}
+
 	// deletes every node in list, then cycling to the next node until list is empty
-	for (SCLLNode<t>* frontNode; !isEmpty();) {
-		frontNode = current;
+	for (SCLLNode<t>* frontNode = current; !isEmpty();) {
 		current = frontNode->next;
 		delete frontNode;
 	}
@@ -80,6 +85,8 @@ void SCLList<t>::addToTail(const t& data) {
 	}
 	else {
 		SCLLNode<t>* lastNode;
+
+		// searches for last node in list
 		for (lastNode = current; lastNode->next != current; lastNode = lastNode->next);
 
 		lastNode->next = tmp;
