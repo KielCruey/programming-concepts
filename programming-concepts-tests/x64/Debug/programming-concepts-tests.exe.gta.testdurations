@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GtaTestDurations xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Executable>C:\src\programming-concepts\programming-concepts-tests\x64\Debug\programming-concepts-tests.exe</Executable>
+  <TestDurations>
+    <TestDuration Test="DLListTest.IsEmpty_EmptyList" Duration="1" />
+    <TestDuration Test="DLListTest.IsEmpty_NonEmptyList" Duration="1" />
+    <TestDuration Test="DLListTest.IsInList_NoElement" Duration="1" />
+    <TestDuration Test="DLListTest.IsInList_ElementFound" Duration="1" />
+    <TestDuration Test="DLListTest.AddToHead_NullList" Duration="1" />
+    <TestDuration Test="DLListTest.AddToHead_NonNullList" Duration="1" />
+    <TestDuration Test="DLListTest.AddToTail_NullList" Duration="1" />
+    <TestDuration Test="DLListTest.AddToTail_NonNullList" Duration="1" />
+    <TestDuration Test="DLListTest.DeleteDLLNode_NullList" Duration="1" />
+    <TestDuration Test="DLListTest.DeleteDLLNode_OnlyOneNode" Duration="1" />
+    <TestDuration Test="DLListTest.DeleteDLLNode_MoreThanOneNode_DeleteHead" Duration="1" />
+    <TestDuration Test="DLListTest.DeleteDLLNode_DeleteInTheMiddle" Duration="1" />
+    <TestDuration Test="DLListTest.DeleteDLLNode_DeleteTheTail" Duration="1" />
+    <TestDuration Test="DLListTest.DeleteFromHead_NullList" Duration="1" />
+    <TestDuration Test="DLListTest.DeleteFromHead_OnlyOneElement" Duration="1" />
+    <TestDuration Test="DLListTest.DeleteFromHead_MoreThenOneElement" Duration="1" />
+    <TestDuration Test="DLListTest.DeleteFromTail_NullList" Duration="1" />
+    <TestDuration Test="DLListTest.DeleteFromTail_OnlyOneElement" Duration="1" />
+    <TestDuration Test="DLListTest.DeleteFromTail_MoreThenOneElement" Duration="1" />
+    <TestDuration Test="SCLLTest.IsEmpty_NullList" Duration="1" />
+    <TestDuration Test="SCLLTest.IsEmpty_NonNullList_OneElement" Duration="1" />
+    <TestDuration Test="SCLLTest.AddToHead_NullList" Duration="1" />
+    <TestDuration Test="SCLLTest.AddToHead_OneElement" Duration="1" />
+    <TestDuration Test="SCLLTest.AddToHead_MoreThanOneElement" Duration="1" />
+    <TestDuration Test="SLListTest.IsEmpty_EmptyList" Duration="1" />
+    <TestDuration Test="SLListTest.IsEmpty_NonEmptyList" Duration="1" />
+    <TestDuration Test="SLListTest.AddToHead_NullList" Duration="1" />
+    <TestDuration Test="SLListTest.AddToHead" Duration="1" />
+    <TestDuration Test="SLListTest.AddToTail_NullList" Duration="1" />
+    <TestDuration Test="SLListTest.AddToTail" Duration="1" />
+    <TestDuration Test="SLListTest.DeleteFromHead_NullList" Duration="1" />
+    <TestDuration Test="SLListTest.DeleteFromHead_OnlyOneElement" Duration="1" />
+    <TestDuration Test="SLListTest.DeleteFromHead_MoreThanOneElement" Duration="1" />
+    <TestDuration Test="SLListTest.DeleteFromTail_NullList" Duration="1" />
+    <TestDuration Test="SLListTest.DeleteFromTail_OnlyOneElement" Duration="1" />
+    <TestDuration Test="SLListTest.DeleteFromTail_MoreThanOneElement" Duration="1" />
+    <TestDuration Test="SLListTest.DeleteSLLNode_NullList" Duration="1" />
+    <TestDuration Test="SLListTest.DeleteSLLNode_OnlyOneElement" Duration="1" />
+    <TestDuration Test="SLListTest.DeleteSLLNode_MoreThanOneElement_DeleteHead" Duration="1" />
+    <TestDuration Test="SLListTest.DeleteSLLNode_MoreThanOneElement_DeleteMiddle" Duration="1" />
+    <TestDuration Test="SLListTest.DeleteSLLNode_MoreThanOneElement_DeleteTail" Duration="1" />
+    <TestDuration Test="SLListTest.IsInList_NoElement" Duration="1" />
+    <TestDuration Test="SLListTest.IsInList_ElementFound" Duration="1" />
+    <TestDuration Test="SCLLTest.AddToTail_NullList" Duration="1" />
+    <TestDuration Test="SCLLTest.AddToTail_OneElement" Duration="1" />
+    <TestDuration Test="SCLLTest.AddToTail_MoreThanOneElement" Duration="1" />
+    <TestDuration Test="SCLLTest.AddToTail_NonNullList_OneElement" Duration="1" />
+    <TestDuration Test="SCLLTest.AddToTail_NonNullList_MoreThanTwoElements" Duration="1" />
+    <TestDuration Test="SCLLTest.DeleteFromHead_NullList" Duration="1" />
+    <TestDuration Test="SCLLTest.DeleteFromHead_NonNullList" Duration="1" />
+  </TestDurations>
+</GtaTestDurations>

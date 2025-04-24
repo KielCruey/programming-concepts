@@ -1,0 +1,91 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\src\\programming-concepts\\programming-concepts-tests\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3628696C-9A36-4708-8448-E115151FFC6F}|programming-concepts-tests.vcxproj|C:\\src\\programming-concepts\\programming-concepts-tests\\singly-cirular-linked-list-test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3628696C-9A36-4708-8448-E115151FFC6F}|programming-concepts-tests.vcxproj|solutionrelative:singly-cirular-linked-list-test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFEF4960-602A-4B01-99C9-A7B854FD2F3C}|Solution Items{DFEF4960-602A-4B01-99C9-A7B854FD2F3C}|C:\\src\\programming-concepts\\singly-circular-linked-list\\singly-circular-linked-list.inl||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFEF4960-602A-4B01-99C9-A7B854FD2F3C}|Solution Items{DFEF4960-602A-4B01-99C9-A7B854FD2F3C}|C:\\src\\programming-concepts\\singly-circular-linked-list\\singly-circular-linked-list.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3628696C-9A36-4708-8448-E115151FFC6F}|programming-concepts-tests.vcxproj|C:\\src\\programming-concepts\\programming-concepts-tests\\singly-cirular-linked-list-test.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3628696C-9A36-4708-8448-E115151FFC6F}|programming-concepts-tests.vcxproj|solutionrelative:singly-cirular-linked-list-test.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 223,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "singly-circular-linked-list.hpp",
+              "DocumentMoniker": "C:\\src\\programming-concepts\\singly-circular-linked-list\\singly-circular-linked-list.hpp",
+              "RelativeDocumentMoniker": "..\\singly-circular-linked-list\\singly-circular-linked-list.hpp",
+              "ToolTip": "C:\\src\\programming-concepts\\singly-circular-linked-list\\singly-circular-linked-list.hpp",
+              "RelativeToolTip": "..\\singly-circular-linked-list\\singly-circular-linked-list.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-07T22:40:54.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "singly-circular-linked-list.inl",
+              "DocumentMoniker": "C:\\src\\programming-concepts\\singly-circular-linked-list\\singly-circular-linked-list.inl",
+              "RelativeDocumentMoniker": "..\\singly-circular-linked-list\\singly-circular-linked-list.inl",
+              "ToolTip": "C:\\src\\programming-concepts\\singly-circular-linked-list\\singly-circular-linked-list.inl",
+              "RelativeToolTip": "..\\singly-circular-linked-list\\singly-circular-linked-list.inl",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAABwAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-04-07T22:40:53.979Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 207,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "singly-cirular-linked-list-test.cpp",
+              "DocumentMoniker": "C:\\src\\programming-concepts\\programming-concepts-tests\\singly-cirular-linked-list-test.cpp",
+              "RelativeDocumentMoniker": "singly-cirular-linked-list-test.cpp",
+              "ToolTip": "C:\\src\\programming-concepts\\programming-concepts-tests\\singly-cirular-linked-list-test.cpp",
+              "RelativeToolTip": "singly-cirular-linked-list-test.cpp",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAowE8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-07T22:36:47.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "singly-cirular-linked-list-test.hpp",
+              "DocumentMoniker": "C:\\src\\programming-concepts\\programming-concepts-tests\\singly-cirular-linked-list-test.hpp",
+              "RelativeDocumentMoniker": "singly-cirular-linked-list-test.hpp",
+              "ToolTip": "C:\\src\\programming-concepts\\programming-concepts-tests\\singly-cirular-linked-list-test.hpp",
+              "RelativeToolTip": "singly-cirular-linked-list-test.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-07T22:36:58.076Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

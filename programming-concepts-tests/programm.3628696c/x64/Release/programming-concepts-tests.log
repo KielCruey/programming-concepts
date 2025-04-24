@@ -1,0 +1,12 @@
+﻿  pch.cpp
+  doubly-linked-list-test.cpp
+  singly-cirular-linked-list-test.cpp
+  singly-linked-list-test.cpp
+  Generating Code...
+C:\src\programming-concepts\singly-linked-list\singly-linked-list.inl(111,1): warning C4172: returning address of local variable or temporary: data
+C:\src\programming-concepts\singly-linked-list\singly-linked-list.inl(144,1): warning C4172: returning address of local variable or temporary: data
+C:\src\programming-concepts\singly-linked-list\singly-linked-list.inl(197,1): warning C4172: returning address of local variable or temporary: data
+C:\src\programming-concepts\doubly-linked-list\doubly-linked-list.inl(161,1): warning C4172: returning address of local variable or temporary: nodeData
+C:\src\programming-concepts\doubly-linked-list\doubly-linked-list.inl(190,1): warning C4172: returning address of local variable or temporary: data
+C:\src\programming-concepts\doubly-linked-list\doubly-linked-list.inl(221,1): warning C4172: returning address of local variable or temporary: data
+  programming-concepts-tests.vcxproj -> C:\src\programming-concepts\programming-concepts-tests\x64\Release\programming-concepts-tests.exe
