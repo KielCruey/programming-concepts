@@ -17,16 +17,19 @@ SCLList<t>::SCLList(SCLLNode<t>* current) :
 
 template<class t>
 SCLList<t>::~SCLList() {
-	// edge condition -- checks if the list has no nodes at all
+ 	// edge condition -- checks if the list has no nodes at all
 	if (isEmpty())
 		return;
 
-	// finds last node
+	// node references
+	SCLLNode<t>* frontNode;
 	SCLLNode<t>* lastNode;
+	SCLLNode<t>* deletedNode;
 
 	// only once node pointing it itself
 	if (current->next = current) {
 		lastNode = current;
+		lastNode->next = nullptr;
 	}
 	else {
 		for (lastNode = current; lastNode != nullptr && lastNode->next != current; lastNode = lastNode->next);
@@ -34,9 +37,11 @@ SCLList<t>::~SCLList() {
 	}
 
 	// deletes every node in list, then cycling to the next node until list is empty
-	for (SCLLNode<t>* frontNode = current; !isEmpty();) {
-		current = frontNode->next;
-		delete frontNode;
+	for (frontNode = current; frontNode != nullptr;) {
+		deletedNode = current;
+		frontNode = current->next;
+
+		delete deletedNode;
 	}
 }
 
