@@ -22,26 +22,17 @@ SCLList<t>::~SCLList() {
 		return;
 
 	// node references
-	SCLLNode<t>* frontNode;
 	SCLLNode<t>* lastNode;
 	SCLLNode<t>* deletedNode;
 
-	// only once node pointing it itself
-	if (current->next = current) {
-		lastNode = current;
-		lastNode->next = nullptr;
-	}
-	else {
-		for (lastNode = current; lastNode != nullptr && lastNode->next != current; lastNode = lastNode->next);
-		lastNode->next = nullptr; // makes singly circular linked list into a singly linked list
-	}
+	for (lastNode = current; lastNode != nullptr && lastNode->next != current; lastNode = lastNode->next);
+	lastNode->next = nullptr; // makes singly circular linked list into a singly linked list
 
 	// deletes every node in list, then cycling to the next node until list is empty
-	for (frontNode = current; frontNode != nullptr;) {
-		deletedNode = current;
+	for (SCLLNode<t>* frontNode = current; !isEmpty();) {
 		frontNode = current->next;
-
-		delete deletedNode;
+		delete current;
+		current = frontNode;
 	}
 }
 

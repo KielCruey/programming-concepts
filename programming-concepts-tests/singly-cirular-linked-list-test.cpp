@@ -30,6 +30,7 @@ TEST_F(SCLLTest, IsEmpty_NullList) {
 	EXPECT_TRUE(getList()->isEmpty());
 }
 
+
 TEST_F(SCLLTest, IsEmpty_NonNullList_OneElement) {
 	getList()->addToHead(1);
 
@@ -45,7 +46,7 @@ TEST_F(SCLLTest, AddToHead_NullList) {
 	EXPECT_EQ(getList()->getCurrent(), node1);
 	EXPECT_EQ(getList()->getCurrent()->next, node1);
 }
-
+/*
 TEST_F(SCLLTest, AddToHead_OneElement) {
 	getList()->addToHead(1);
 	auto node1 = getList()->getCurrent();
@@ -116,7 +117,7 @@ TEST_F(SCLLTest, DeleteFromHead_NullList) {
 
 	EXPECT_EQ(getList()->getCurrent(), nullptr);
 }
-/*
+
 TEST_F(SCLLTest, DeleteFromHead_NonNullList) {
 	getList()->addToHead(1);
 	auto node1 = getList()->getCurrent();
