@@ -46,7 +46,7 @@ TEST_F(SCLLTest, AddToHead_NullList) {
 	EXPECT_EQ(getList()->getCurrent(), node1);
 	EXPECT_EQ(getList()->getCurrent()->next, node1);
 }
-/*
+
 TEST_F(SCLLTest, AddToHead_OneElement) {
 	getList()->addToHead(1);
 	auto node1 = getList()->getCurrent();
@@ -117,7 +117,7 @@ TEST_F(SCLLTest, DeleteFromHead_NullList) {
 
 	EXPECT_EQ(getList()->getCurrent(), nullptr);
 }
-
+/*
 TEST_F(SCLLTest, DeleteFromHead_NonNullList) {
 	getList()->addToHead(1);
 	auto node1 = getList()->getCurrent();
@@ -137,3 +137,34 @@ TEST_F(SCLLTest, DeleteFromHead_NonNullList_MoreThanOne) {
 	EXPECT_EQ(node1->data = 5);
 }
 */
+
+// ----------- deleteFromTail() ----------
+
+// ----------- deleteCSLLNode() ----------
+
+// ----------- isInList() ----------
+TEST_F(SCLLTest, IsInList_NullList) {
+	EXPECT_FALSE(getList()->isInList(2));
+}
+
+TEST_F(SCLLTest, IsInList_NonNullList) {
+	getList()->addToHead(2);
+
+	EXPECT_TRUE(getList()->isInList(2));
+}
+
+TEST_F(SCLLTest, IsInList_NonNullList_MoreThanOneElement) {
+	getList()->addToHead(2);
+	getList()->addToHead(4);
+	getList()->addToHead(6);
+
+	EXPECT_TRUE(getList()->isInList(4));
+}
+
+TEST_F(SCLLTest, IsInList_NonNullList_LastElement) {
+	getList()->addToHead(2);
+	getList()->addToHead(4);
+	getList()->addToHead(6);
+
+	EXPECT_TRUE(getList()->isInList(6));
+}

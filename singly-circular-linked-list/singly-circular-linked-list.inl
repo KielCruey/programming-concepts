@@ -22,8 +22,8 @@ SCLList<t>::~SCLList() {
 		return;
 
 	// node references
-	SCLLNode<t>* lastNode;
-	SCLLNode<t>* deletedNode;
+	SCLLNode<t>* lastNode = current;
+	SCLLNode<t>* deletedNode = current;
 
 	for (lastNode = current; lastNode != nullptr && lastNode->next != current; lastNode = lastNode->next);
 	lastNode->next = nullptr; // makes singly circular linked list into a singly linked list
@@ -199,7 +199,7 @@ inline bool SCLList<t>::isInList(t data) const
 		// 2 or more nodes in list
 		else
 		{
-			// 2 or more nodes in list
+			// searches the list and checks if number is in the nodes
 			for (tmp = current;
 				tmp->data != data && tmp->next != current && tmp != nullptr;
 				tmp = tmp->next);
