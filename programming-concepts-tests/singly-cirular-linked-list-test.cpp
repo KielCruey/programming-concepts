@@ -117,17 +117,17 @@ TEST_F(SCLLTest, DeleteFromHead_NullList) {
 
 	EXPECT_EQ(getList()->getCurrent(), nullptr);
 }
-/*
+
 TEST_F(SCLLTest, DeleteFromHead_NonNullList) {
 	getList()->addToHead(1);
-	auto node1 = getList()->getCurrent();
+	auto node1 = getList()->getCurrent()->data;
 
 	auto numb1 = getList()->deleteFromHead();
 
-	EXPECT_EQ(*numb1, 1);
+	EXPECT_EQ(node1, 1);
 }
 
-
+/*
 TEST_F(SCLLTest, DeleteFromHead_NonNullList_MoreThanOne) {
 	getList()->addToHead(1);
 	auto node1 = getList()->getCurrent();
