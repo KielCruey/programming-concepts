@@ -96,16 +96,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\insertion-sort\insertion-sort.hpp" />
-    <ClInclude Include="insertion-sort-tests.hpp" />
+    <ClInclude Include="..\sorting\sorting.hpp" />
     <ClInclude Include="pch.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\insertion-sort\insertion-sort.cpp" />
-    <ClCompile Include="insertion-sort-tests.cpp" />
+    <ClInclude Include="sorting-tests.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\sorting\sorting.cpp" />
+    <ClCompile Include="sorting-tests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

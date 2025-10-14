@@ -7,26 +7,42 @@ Sorting::Sorting(std::vector<int>* v) {
 
 // ========= functions =========
 // --------- comparison sorting ---------
-// rElement is the right most pointer
-// lElement is the left most pointer
+// r is the right most element
+// l is the left most element
 std::vector<int>* Sorting::insertionSort() {
-    for(int rElement = 1; rElement < v->size(); rElement++) {
-        int key = v->at(rElement);
-        int lElement = rElement - 1;
+    for(int r = 1; r < v->size(); r++) {
+        int key = v->at(r);
+        int l = r - 1;
 
-        while(lElement >= 0 && v->at(lElement) > key) {
-            v->at(lElement + 1) = v->at(lElement);
-            lElement--; 
+        // checks if lElement is larger than key
+        while(l >= 0 && v->at(l) > key) {
+            v->at(l + 1) = v->at(l);
+            l--; 
         }
 
-        v->at(lElement + 1) = key;
+        v->at(l + 1) = key;
     }
     
     return v;
 }
 
+// e is every element
+// a is adjacent elements
 std::vector<int> *Sorting::bubbleSort() {
-    return nullptr;
+    // every element in the vector
+    for(int e = 0; e < v->size() - 1; ++e) {
+        // compares adjacent elements
+        for(int a = 0; a < v->size() - e - 1; ++a) {
+            // checks if lElement is larger than rElement
+            if(v->at(a) > v->at(a + 1)) {
+                int temp = v->at(a);
+                v->at(a) = v->at(a + 1);
+                v->at(a + 1) = temp;
+            }
+        }
+    }
+
+    return v;
 }
 
 std::vector<int> *Sorting::selectionSort() {
@@ -42,6 +58,10 @@ std::vector<int> *Sorting::maxHeapSort() {
 }
 
 std::vector<int> *Sorting::quickSort() {
+    return nullptr;
+}
+
+std::vector<int>* Sorting::shellSort() {
     return nullptr;
 }
 

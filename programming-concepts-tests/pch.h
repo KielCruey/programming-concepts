@@ -2,4 +2,5 @@
 
 #include "gtest/gtest.h"
 
-#include "../insertion-sort/insertion-sort.hpp"
+#include "../sorting/sorting.hpp"
+
