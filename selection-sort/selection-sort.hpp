@@ -1,6 +1,0 @@
-class SelectionSort
-{
-public:
-    SelectionSort();
-    
-};

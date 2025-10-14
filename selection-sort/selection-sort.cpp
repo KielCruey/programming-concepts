@@ -1,2 +1,0 @@
-#include "selection-sort.hpp"
-
