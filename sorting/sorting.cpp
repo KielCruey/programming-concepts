@@ -30,9 +30,9 @@ std::vector<int>* Sorting::insertionSort() {
 // a is adjacent elements
 std::vector<int> *Sorting::bubbleSort() {
     // every element in the vector
-    for(int e = 0; e < v->size() - 1; ++e) {
+    for(int e = 0; e < v->size() - 1; e++) {
         // compares adjacent elements
-        for(int a = 0; a < v->size() - e - 1; ++a) {
+        for(int a = 0; a < v->size() - e - 1; a++) {
             // checks if lElement is larger than rElement
             if(v->at(a) > v->at(a + 1)) {
                 int temp = v->at(a);
@@ -45,7 +45,13 @@ std::vector<int> *Sorting::bubbleSort() {
     return v;
 }
 
+// cMin is current minimum
+// cItem is current item
 std::vector<int> *Sorting::selectionSort() {
+    int cMin, cItem, min;
+
+    for(cMin = 0; cMin < v->size() - 1; cMin++)
+
     return nullptr;
 }
 
