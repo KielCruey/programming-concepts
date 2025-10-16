@@ -13,6 +13,7 @@ public:
     std::vector<int>* maxHeapSort();
     std::vector<int>* quickSort();
     std::vector<int>* shellSort();
+    std::vector<int>* mergeSort();
 
     // non-comparison based sorting
     std::vector<int>* countingSort();

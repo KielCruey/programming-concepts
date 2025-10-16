@@ -71,6 +71,10 @@ std::vector<int>* Sorting::shellSort() {
     return nullptr;
 }
 
+std::vector<int>* Sorting::mergeSort() {
+    return nullptr;
+}
+
 // --------- non-comparison sorting ---------
 std::vector<int> *Sorting::countingSort() {
     return nullptr;
