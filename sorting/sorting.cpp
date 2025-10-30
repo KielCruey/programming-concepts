@@ -1,4 +1,5 @@
 #include <utility> // swap
+#include <stdexcept> //invalid_argument 
 
 #include "sorting.hpp"
 
@@ -95,8 +96,35 @@ std::vector<int>* Sorting::shellSort() {
     return nullptr;
 }
 
-std::vector<int>* Sorting::mergeSort() {
-    return nullptr;
+// Recursive function for sorting the array
+std::vector<int>* Sorting::mergeSort(int l, int r){
+    // error checking
+    if (l < 0)
+        throw std::invalid_argument("MergeSort -- L received negative value");
+
+    if (l > (int)getVector()->size())
+        throw std::invalid_argument("MergeSort -- L greater than vector's max size");
+
+    if(r < 0)
+        throw std::invalid_argument("MergeSort -- R received negative value");
+
+    if(r > (int)getVector()->size())
+        throw std::invalid_argument("MergeSort -- R greater than vector's max size");
+
+    // Merge until we are left with a single element
+    if (l < r) {
+        // Calculate mid-point of vector
+        int mid = (l + r) / 2;
+
+        // Sort the sub-vectors
+        mergeSort(l, mid);
+        mergeSort(mid + 1, r);
+
+        // Merge the two sub-lists 
+        merge(l, mid, r);
+    }
+
+    return v;
 }
 
 // --------- non-comparison sorting ---------
@@ -119,4 +147,57 @@ void Sorting::setVector(std::vector<int>* v) {
 
 std::vector<int>* Sorting::getVector() {
     return this->v;
+}
+
+// ========= PRIVATE FUNCTIONS =========
+// Merges to sorted sub-lists
+void Sorting::merge(int start, int middle, int end) {
+    // Initialize left-hand elements
+    int elements_left = middle - start + 1;
+    std::vector<int> tmp_left;
+
+    // Initialize right-hand elements
+    int elements_right = end - middle;
+    std::vector<int> tmp_right;
+
+    for (int i = 0; i < elements_left; i++)
+        tmp_left.push_back(this->v->at(start + i));
+
+    for (int i = 0; i < elements_right; i++)
+        tmp_right.push_back(this->v->at(middle + 1 + i));
+
+    // Compare vectors and add elements to the final result
+    int i = 0;
+    int j = 0;
+    int pos = start;
+
+    while ((i < tmp_left.size()) && (j < tmp_right.size())) {
+        // Add left-hand element if it's smaller
+        // Otherwise add right-hand element 
+        if (tmp_left[i] <= tmp_right[j]) {
+            this->v->at(pos) = tmp_left[i];
+            i++;
+        }
+        else {
+            this->v->at(pos) = tmp_right[j];
+            j++;
+        }
+
+        // Increment position in final vector
+        pos++;
+    }
+
+    // Clean up remaining left-hand elements
+    while (i < tmp_left.size()) {
+        this->v->at(pos) = tmp_left[i];
+        i++;
+        pos++;
+    }
+
+    // Clean up remaining right-hand elements
+    while (j < tmp_right.size()) {
+        this->v->at(pos) = tmp_right[j];
+        j++;
+        pos++;
+    }
 }
