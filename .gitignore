@@ -4,4 +4,6 @@ build/
 
 programming-concepts-tests/packages/
 programming-concepts-tests/x64/
-programming-concepts-tests/programm.3628696c/
+programming-concepts-tests/programm*
+
+.idea/

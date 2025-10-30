@@ -15,5 +15,5 @@ protected:
 	virtual void TearDown() override; // called after each test fixture
 
 private:
-	std::vector<int>* v;
+	std::vector<int>* v; // predefined values
 };
