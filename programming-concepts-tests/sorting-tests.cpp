@@ -38,6 +38,12 @@ namespace SelectionSort{
 	}
 }
 
+
+namespace MergeSort {
+
+}
+
+
 // ========== test fixture ==========
 SortingFixture::SortingFixture(std::vector<int>* v)
 	: v(v)
