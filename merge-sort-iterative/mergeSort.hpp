@@ -17,7 +17,7 @@ public:
 
 private:
 	// Merges to sorted sub-lists
-	void merge(unsigned int start, unsigned int middle, unsigned int end);
+	void merge(std::vector<int>& vec, unsigned int start, unsigned int middle, unsigned int end);
 
 	std::vector<int>* v = nullptr;
 };
