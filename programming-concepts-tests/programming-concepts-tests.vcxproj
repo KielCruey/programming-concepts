@@ -96,6 +96,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\sorting\heap.hpp" />
     <ClInclude Include="..\sorting\sorting.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="sorting-tests.hpp" />
@@ -104,6 +105,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\sorting\heap.cpp" />
     <ClCompile Include="..\sorting\sorting.cpp" />
     <ClCompile Include="sorting-tests.cpp" />
   </ItemGroup>
