@@ -31,6 +31,9 @@ MaxHeap::MaxHeap()
 	: Heap()
 { }
 
+// v is a vector of elements
+// index can be what node or the size of the vector to heapify
+// this function only "sorts" one node in the priority queue
 void MaxHeap::heapify(std::vector<int>& v, int index) {
 	int l = left(index);
 	int r = right(index);
@@ -49,24 +52,45 @@ void MaxHeap::heapify(std::vector<int>& v, int index) {
 	}
 }
 
-void MaxHeap::buildHeap(std::vector<int>& v, int size){
+// v is a vector of elements
+// size is the vector's size -- the maximum value
+// buildHeap function does build heap without violating heap properities
+void MaxHeap::buildHeap(std::vector<int>& v, int vSize){
+	this->currentSize = vSize;
+
+	for (int i = vSize / 2; i > 0; i--) {
+		heapify(v, vSize);
+	}
 }
 
-void MaxHeap::heapSort(std::vector<int>& V, int size) {
+// v is a vector of elements
+// size is the vector's size -- the maximum value
+// builds heap, then changes the max which min value then heaps without violating heap properities
+// heapSort function will sort all the elements from lowest to highest values
+void MaxHeap::heapSort(std::vector<int>& v, int vSize) {
+	buildHeap(v, vSize);
+
+	for (int i = vSize; i > 0; i--) {
+		std::swap(v.at(vSize - 1), v.at(0)); // swaps max value with min value
+		this->currentSize--;
+		heapify(v, 0); // sorts only the root value, most likely breaks heap properities
+	}
 }
 
-void MaxHeap::insert(std::vector<int>& V, int x, int key) {
-}
-
-int MaxHeap::heapMaximum(std::vector<int>* V) {
+int MaxHeap::extractMax(std::vector<int>& v, int newSize) {
 	return 0;
 }
 
-int MaxHeap::extractMax(std::vector<int>& V, int newSize) {
+void MaxHeap::insert(std::vector<int>& v, int x, int key) {
+}
+
+int MaxHeap::heapMaximum(std::vector<int>* v) {
 	return 0;
 }
 
-void MaxHeap::increaseKey(std::vector<int>& V, int x, int key) {
+
+
+void MaxHeap::increaseKey(std::vector<int>& v, int x, int key) {
 }
 
 // ======== MinHeap ========

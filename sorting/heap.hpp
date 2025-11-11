@@ -14,10 +14,10 @@ public:
 	int left(int index);
 	int right(int index);
 
-	virtual void heapify(std::vector<int>& V, int index) = 0;
-	virtual void buildHeap(std::vector<int>& V, int size) = 0;
-	virtual void heapSort(std::vector<int>& V, int size) = 0;
-	virtual void insert(std::vector<int>& V, int x, int key) = 0;
+	virtual void heapify(std::vector<int>& v, int index) = 0;
+	virtual void buildHeap(std::vector<int>& v, int size) = 0;
+	virtual void heapSort(std::vector<int>& v, int vSize) = 0;
+	virtual void insert(std::vector<int>& v, int x, int key) = 0;
 
 	// =========== getters/setters ===========
 	inline void setV(std::vector<int>* v);
@@ -40,8 +40,8 @@ public:
 	virtual void heapSort(std::vector<int>& v, int size) override;
 	virtual void insert(std::vector<int>& v, int x, int key) override;
 
-	int heapMaximum(std::vector<int>* v);
 	int extractMax(std::vector<int>& v, int newSize);
+	int heapMaximum(std::vector<int>* v);
 	void increaseKey(std::vector<int>& v, int x, int key);
 };
 
@@ -55,8 +55,8 @@ public:
 	virtual void heapSort(std::vector<int>& v, int size) override;
 	virtual void insert(std::vector<int>& v, int x, int key) override;
 
-	int heapMinimum(std::vector<int>& v);
 	int extractMin(std::vector<int>& v, int newSize);
+	int heapMinimum(std::vector<int>& v);
 	void decreaseKey(std::vector<int>& V, int x, int key);
 };
 
