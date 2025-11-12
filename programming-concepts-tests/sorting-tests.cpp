@@ -52,10 +52,3 @@ void SortingFixture::TearDown() {
 	delete v;
 }
 
-void SortingFixture::setVector(std::vector<int>* v) {
-	this->v = v;
-}
-
-std::vector<int>* SortingFixture::getVector() {
-	return this->v;
-}

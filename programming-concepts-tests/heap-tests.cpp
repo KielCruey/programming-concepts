@@ -2,14 +2,33 @@
 #include "heap-tests.hpp"
 
 // ========== tests ==========
-
 namespace HeapTests {
-	TEST_F(HeapFixture, Insertion_Normal_Condition) {
+	TEST_F(HeapFixture, HeapMaximum_Grabs_Root_Node) {
+		std::vector<int> testV = { 4 };
 		
 		MaxHeap h = MaxHeap();
+		h.heapMaximum(*getVector());
+
+		EXPECT_EQ(getVector()->at(0), testV.at(0));
+	}
+
+	TEST_F(HeapFixture, HeapMaximum_Null_Heap) {
+		std::vector<int> nullV = {};
+
+		MaxHeap h = MaxHeap();
+
+		ASSERT_THROW(h.heapMaximum(nullV), std::runtime_error);
+	}
+
+	TEST_F(HeapFixture, BuildMaxHeap_Normal_Conditions) {
+		std::vector<int> testV = { 4 };
+
+		MaxHeap h = MaxHeap();
+		h.buildHeap(*getVector(), getVector()->size());
+
+		EXPECT_EQ(getVector()->at(0), testV.at(0));
 	}
 }
-
 
 // ========== test fixture ==========
 HeapFixture::HeapFixture(std::vector<int>* v) 

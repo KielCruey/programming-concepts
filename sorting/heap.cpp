@@ -77,12 +77,13 @@ void MaxHeap::heapSort(std::vector<int>& v, int vSize) {
 	}
 }
 
-
 // v is a vector of elements
 // returns root node if non-empty vector
 int MaxHeap::heapMaximum(std::vector<int>& v) {
-	if (v.empty())
+	if (v.empty()) {
 		throw std::runtime_error("empty vector -- can't execute 'extractMax' function");
+	}
+		
 
 	return v.at(0);
 }

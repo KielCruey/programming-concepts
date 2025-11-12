@@ -11,9 +11,17 @@ public:
 	std::vector<int>* getVector();
 
 protected:
-	virtual void SetUp() override; // called before each test fixture
-	virtual void TearDown() override; // called after each test fixture
+	inline virtual void SetUp() override; // called before each test fixture
+	inline virtual void TearDown() override; // called after each test fixture
 
 private:
 	std::vector<int>* v; // predefined values
 };
+
+inline void SortingFixture::setVector(std::vector<int>* v) {
+	this->v = v;
+}
+
+inline std::vector<int>* SortingFixture::getVector() {
+	return this->v;
+}
