@@ -98,6 +98,7 @@
   <ItemGroup>
     <ClInclude Include="..\sorting\heap.hpp" />
     <ClInclude Include="..\sorting\sorting.hpp" />
+    <ClInclude Include="heap-tests.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="sorting-tests.hpp" />
   </ItemGroup>
@@ -107,6 +108,7 @@
   <ItemGroup>
     <ClCompile Include="..\sorting\heap.cpp" />
     <ClCompile Include="..\sorting\sorting.cpp" />
+    <ClCompile Include="heap-tests.cpp" />
     <ClCompile Include="sorting-tests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

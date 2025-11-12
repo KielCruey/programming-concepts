@@ -1,11 +1,11 @@
 #include "heap.hpp"
 
 // ======== Heap ========
-Heap::Heap() {
+Heap::Heap(std::vector<int>* v) 
+	: v(v)
+{
 	currentSize = NULL;
 	currentCapacity = NULL;
-
-	v = new std::vector<int>();
 }
 
 Heap::~Heap() {
@@ -27,8 +27,8 @@ int Heap::right(int index){
 }
 
 // ======== MaxHeap ========
-MaxHeap::MaxHeap()
-	: Heap()
+MaxHeap::MaxHeap(std::vector<int>* v)
+	: Heap(v)
 { }
 
 // v is a vector of elements
@@ -113,17 +113,14 @@ void MaxHeap::increaseKey(std::vector<int>& v, int newKey, int oldKey) {
 	newKey = oldKey;
 
 	// find index where the oldKey is at
-	for (int a = 0; a < v.size(); a++) {
-		if (v.at(a) = oldKey) {
-			i = a;
-			break;
-		}
-	}
+	auto it = find(v.begin(), v.end(), oldKey);
 
+	/*
 	while (i > 0 && v.at(parent(i)) < v.at(i)) {
 		std::swap(v.at(i), v.at(parent(i)));
 		i = parent(i);
 	}
+	*/
 }
 
 // v is a vector of elements
@@ -133,8 +130,8 @@ void MaxHeap::insert(std::vector<int>& v, int x, int key) {
 }
 
 // ======== MinHeap ========
-MinHeap::MinHeap() 
-	: Heap()
+MinHeap::MinHeap(std::vector<int>* v)
+	: Heap(v)
 { }
 
 // take in an in vector and makes sure the current values in the tree hold the heap properities

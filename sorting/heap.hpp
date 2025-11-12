@@ -7,7 +7,7 @@
 class Heap
 {
 public:
-	Heap();
+	Heap(std::vector<int>* v = nullptr);
 	virtual ~Heap();
 
 	// =========== functions ===========
@@ -32,7 +32,7 @@ protected:
 
 class MaxHeap : public Heap {
 public: 
-	MaxHeap();
+	MaxHeap(std::vector<int>* v = nullptr);
 	virtual ~MaxHeap() = default;
 
 	virtual void heapify(std::vector<int>& v, int index) override;
@@ -47,7 +47,7 @@ public:
 
 class MinHeap : public Heap {
 public:
-	MinHeap();
+	MinHeap(std::vector<int>* v = nullptr);
 	virtual ~MinHeap() = default;
 
 	virtual void heapify(std::vector<int>& v, int index) override;
