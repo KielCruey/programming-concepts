@@ -3,12 +3,17 @@
 
 #include <vector>
 #include <stdexcept>
+#include <cmath> // Required for std::floor
 
 class Heap
 {
 public:
 	Heap(std::vector<int>* v = nullptr);
 	virtual ~Heap();
+
+	// =========== helpers ===========
+	int countingIndex(int i); // base 1 to n indexing
+	int cppIndex(int i); // base 0 to n-1 indexing
 
 	// =========== functions ===========
 	int parent(int index);

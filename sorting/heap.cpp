@@ -14,16 +14,33 @@ Heap::~Heap() {
 	v = nullptr;
 }
 
+// ======== helpers ========
+int Heap::countingIndex(int i) {
+	return i + 1;
+}
+
+int Heap::cppIndex(int i) {
+	return i - 1;
+}
+
+// ======== functions ========
 int Heap::parent(int index) {
-	return index / 2;
+	// request root's parent
+	if (index == 0) 
+		return -1; // meaning NULL parent node
+
+	auto i = std::floor(countingIndex(index) / 2);
+	return cppIndex(i); // converts to 0 base array counting
 }
 
 int Heap::left(int index) {
-	return (2 * index) + 1;
+	auto i = 2 * countingIndex(index);
+	return cppIndex(i); // converts to 0 base array counting
 }
 
 int Heap::right(int index){ 
-	return (2 * index) + 2;
+	auto i = (2 * countingIndex(index)) + 1;
+	return cppIndex(i); // converts to 0 base array counting
 }
 
 // ======== MaxHeap ========
@@ -84,7 +101,6 @@ int MaxHeap::heapMaximum(std::vector<int>& v) {
 		throw std::runtime_error("empty vector -- can't execute 'extractMax' function");
 	}
 		
-
 	return v.at(0);
 }
 
