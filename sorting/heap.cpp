@@ -50,19 +50,20 @@ MaxHeap::MaxHeap(std::vector<int>* v)
 
 // v is a vector of elements
 // index can be what node or the size of the vector to heapify
-// this function only "sorts" one node in the priority queue
+// this function only "sorts" only the left/right node in the priority queue
 void MaxHeap::heapify(std::vector<int>& v, int index) {
 	int l = left(index);
 	int r = right(index);
-	int max = index; // largest value
+	int max = index;
 
 	// checking left and parent node
-	if (l <= v.size() && v.at(l) > v.at(index)) max = l;
+	if (l < v.size() && v.at(l) > v.at(index)) max = l;
 	else max = index;
 
-	// checking right node and the pervious max
-	if (r <= v.size() && v.at(r) > v.at(max)) max = r;
+	// checking right node and the previous max
+	if (r < v.size() && v.at(r) > v.at(max)) max = r;
 
+	// left or right node is swapped with parent
 	if (max != index) {
 		std::swap(v.at(index), v.at(max));
 		heapify(v, max);
