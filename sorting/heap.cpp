@@ -77,20 +77,59 @@ void MaxHeap::heapSort(std::vector<int>& v, int vSize) {
 	}
 }
 
-int MaxHeap::extractMax(std::vector<int>& v, int newSize) {
-	return 0;
+
+// v is a vector of elements
+// returns root node if non-empty vector
+int MaxHeap::heapMaximum(std::vector<int>& v) {
+	if (v.empty())
+		throw std::runtime_error("empty vector -- can't execute 'extractMax' function");
+
+	return v.at(0);
 }
 
+// v is a vector of elements
+// returns max value
+int MaxHeap::extractMax(std::vector<int>& v) {
+	int max = heapMaximum(v);
+	v.at(0) = v.at(v.size() - 1);
+	this->currentSize--;
+	heapify(v, currentSize);
+
+	return max;
+}
+
+// v is a vector of elements
+// x is the object in the vector
+// key is the new key to be changed to
+void MaxHeap::increaseKey(std::vector<int>& v, int newKey, int oldKey) {
+	int i; // index for oldKey's position
+
+	// checks if the new key value to be changed is less that the current object trying to change
+	if (oldKey < newKey) {
+		fprintf(stderr, "new key is smaller than current key");
+		return;
+	}
+		
+	newKey = oldKey;
+
+	// find index where the oldKey is at
+	for (int a = 0; a < v.size(); a++) {
+		if (v.at(a) = oldKey) {
+			i = a;
+			break;
+		}
+	}
+
+	while (i > 0 && v.at(parent(i)) < v.at(i)) {
+		std::swap(v.at(i), v.at(parent(i)));
+		i = parent(i);
+	}
+}
+
+// v is a vector of elements
+// x in the new object to be inserted of the size "n" vector
 void MaxHeap::insert(std::vector<int>& v, int x, int key) {
-}
 
-int MaxHeap::heapMaximum(std::vector<int>* v) {
-	return 0;
-}
-
-
-
-void MaxHeap::increaseKey(std::vector<int>& v, int x, int key) {
 }
 
 // ======== MinHeap ========
@@ -147,10 +186,10 @@ int MinHeap::heapMinimum(std::vector<int>& v) {
 }
 
 // grabs minimum value, then minHeapifies the heap to hold heap properities
-int MinHeap::extractMin(std::vector<int>& v, int newSize) {
+int MinHeap::extractMin(std::vector<int>& v) {
 	int min = heapMinimum(v);
-	v.at(0) = v.at(newSize - 1);
-	this->currentSize = newSize - 1;
+	v.at(0) = v.at(v.size() - 1);
+	this->currentSize = v.size() - 1;
 	heapify(v, 0);
 
 	return min;

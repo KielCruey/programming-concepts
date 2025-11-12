@@ -2,6 +2,7 @@
 #define HEAP_H
 
 #include <vector>
+#include <stdexcept>
 
 class Heap
 {
@@ -23,10 +24,9 @@ public:
 	inline void setV(std::vector<int>* v);
 	inline std::vector<int>* getV() const;
 
-	// =========== variables ===========
+protected:
 	int currentSize;
 	int currentCapacity;
-
 	std::vector<int>* v;
 };
 
@@ -40,9 +40,9 @@ public:
 	virtual void heapSort(std::vector<int>& v, int size) override;
 	virtual void insert(std::vector<int>& v, int x, int key) override;
 
-	int extractMax(std::vector<int>& v, int newSize);
-	int heapMaximum(std::vector<int>* v);
-	void increaseKey(std::vector<int>& v, int x, int key);
+	int heapMaximum(std::vector<int>& v);
+	void increaseKey(std::vector<int>& v, int newKey, int oldKey);
+	int extractMax(std::vector<int>& v);	
 };
 
 class MinHeap : public Heap {
@@ -55,9 +55,9 @@ public:
 	virtual void heapSort(std::vector<int>& v, int size) override;
 	virtual void insert(std::vector<int>& v, int x, int key) override;
 
-	int extractMin(std::vector<int>& v, int newSize);
 	int heapMinimum(std::vector<int>& v);
-	void decreaseKey(std::vector<int>& V, int x, int key);
+	void decreaseKey(std::vector<int>& V, int newKey, int oldKey);
+	int extractMin(std::vector<int>& v);
 };
 
 // =========== getters/setters ===========
