@@ -50,7 +50,7 @@ MaxHeap::MaxHeap(std::vector<int>* v)
 
 // v is a vector of elements
 // index is the node of that particular value and every node under the initial node
-// this function only "sorts" only the left/right node in the priority queue
+// this function only "sorts" only the left/right node then recursively goes down the tree and "sorts" again
 void MaxHeap::heapify(std::vector<int>& v, int index) {
  	int l = left(index);
 	int r = right(index);
@@ -99,7 +99,7 @@ void MaxHeap::heapSort(std::vector<int>& v, int vSize) {
 // returns root node if non-empty vector
 int MaxHeap::heapMaximum(std::vector<int>& v) {
 	if (v.empty()) {
-		throw std::runtime_error("empty vector -- can't execute 'extractMax' function");
+		throw std::runtime_error("empty vector -- can't execute 'heapMaximum' function");
 	}
 		
 	return v.at(0);

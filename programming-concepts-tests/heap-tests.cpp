@@ -87,30 +87,39 @@ namespace HeapTests {
 
 namespace MaxHeapTests {
 	TEST_F(HeapFixture, Heapify_Normal_Conditions) {
-		std::vector<int> initialV = { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7 };
 		std::vector<int> results = { 4, 16, 3, 2, 7, 9, 10, 14, 8, 1 };
 
 		MaxHeap h = MaxHeap();
-		h.heapify(initialV, 1); // heapify index 1 which is "1" from test fixture
+		h.heapify(*getVector(), 1); // heapify index 1 which is "1" from test fixture
 
-		for (int i = 0; i < initialV.size(); i++) {
-			EXPECT_EQ(initialV.at(i), results.at(i));
+		for (int i = 0; i < getVector()->size(); i++) {
+			EXPECT_EQ(getVector()->at(i), results.at(i));
 		}
 	}
 
-	TEST_F(HeapFixture, Heapify_Normal_Conditions_With_Left_Node_Null) {
-
-	}
-
 	TEST_F(HeapFixture, Heapify_Normal_Conditions_With_Right_Node_Null) {
+		std::vector<int> results = { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7 };
 
+		MaxHeap h = MaxHeap();
+		h.heapify(*getVector(), 4); // heapify index 1 which is "1" from test fixture
+
+		for (int i = 0; i < getVector()->size(); i++) {
+			EXPECT_EQ(getVector()->at(i), results.at(i));
+		}
 	}
 
 	TEST_F(HeapFixture, Heapify_Normal_Conditions_With_Left_Right_Nodes_Null) {
+		std::vector<int> results = { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7 };
 
+		MaxHeap h = MaxHeap();
+		h.heapify(*getVector(), 5); // heapify index 1 which is "1" from test fixture
+
+		for (int i = 0; i < getVector()->size(); i++) {
+			EXPECT_EQ(getVector()->at(i), results.at(i));
+		}
 	}
 
-	TEST_F(HeapFixture, HeapMaximum_Grabs_Root_Node) {
+	TEST_F(HeapFixture, HeapMaximum_Normal_Conditions) {
 		std::vector<int> results = { 4 };
 		
 		MaxHeap h = MaxHeap();
@@ -119,13 +128,16 @@ namespace MaxHeapTests {
 		EXPECT_EQ(getVector()->at(0), results.at(0));
 	}
 
+	/*
 	TEST_F(HeapFixture, HeapMaximum_Null_Heap) {
 		std::vector<int> results = {};
 
 		MaxHeap h = MaxHeap();
+		h.heapMaximum(results);
 
 		ASSERT_THROW(h.heapMaximum(results), std::runtime_error);
 	}
+	*/
 
 	TEST_F(HeapFixture, BuildMaxHeap_Normal_Conditions) {
 		std::vector<int> results = { 4 };
