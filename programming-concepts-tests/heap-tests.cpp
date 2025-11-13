@@ -87,34 +87,28 @@ namespace HeapTests {
 
 namespace MaxHeapTests {
 	// no null nodes
-	TEST_F(HeapFixture, Heapify_Normal_Condition_With_Left_Right_Nodes) {
+	TEST_F(HeapFixture, Heapify_Normal_Conditions) {
 		std::vector<int> initialV = { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7 };
-		std::vector<int> results = { 4, 16, 3, 2, 1, 9, 10, 14, 8, 7 };
+		std::vector<int> results = { 4, 16, 3, 2, 7, 9, 10, 14, 8, 1 };
 
 		MaxHeap h = MaxHeap();
 		h.heapify(initialV, 1); // heapify index 1 which is "1" from test fixture
 
-		auto iL = h.left(1); // index left
-		auto iR = h.right(1); // index right
-
-		EXPECT_EQ(getVector()->at(iL), 1); // left node
-		EXPECT_EQ(getVector()->at(iR), 1); // left node
+		for (int i = 0; i < initialV.size(); i++) {
+			EXPECT_EQ(initialV.at(i), results.at(i));
+		}
 	}
-
-	TEST_F(HeapFixture, BuildHeap_Normal_Condition) {
+	TEST_F(HeapFixture, Heapify_Normal_Conditions_With_Left_Node_Null) {
 
 	}
-
-	TEST_F(HeapFixture, HeapSort_Normal_Condition) {
+	TEST_F(HeapFixture, Heapify_Normal_Conditions_With_Right_Node_Null) {
 
 	}
 
-	TEST_F(HeapFixture, Insert_Normal_Condition) {
-
+	TEST_F(HeapFixture, Heapify_Normal_Conditions_With_Left_Right_Nodes_Null) {
 	}
-
 	TEST_F(HeapFixture, HeapMaximum_Grabs_Root_Node) {
-		std::vector<int> results = { 12 };
+		std::vector<int> results = { 4 };
 		
 		MaxHeap h = MaxHeap();
 		h.heapMaximum(*getVector());
@@ -128,10 +122,6 @@ namespace MaxHeapTests {
 		MaxHeap h = MaxHeap();
 
 		ASSERT_THROW(h.heapMaximum(results), std::runtime_error);
-	}
-
-	TEST_F(HeapFixture, IncreaseKey_Null_Heap) {
-
 	}
 
 	TEST_F(HeapFixture, BuildMaxHeap_Normal_Conditions) {
