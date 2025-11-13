@@ -86,7 +86,6 @@ namespace HeapTests {
 }
 
 namespace MaxHeapTests {
-	// no null nodes
 	TEST_F(HeapFixture, Heapify_Normal_Conditions) {
 		std::vector<int> initialV = { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7 };
 		std::vector<int> results = { 4, 16, 3, 2, 7, 9, 10, 14, 8, 1 };
@@ -98,15 +97,19 @@ namespace MaxHeapTests {
 			EXPECT_EQ(initialV.at(i), results.at(i));
 		}
 	}
+
 	TEST_F(HeapFixture, Heapify_Normal_Conditions_With_Left_Node_Null) {
 
 	}
+
 	TEST_F(HeapFixture, Heapify_Normal_Conditions_With_Right_Node_Null) {
 
 	}
 
 	TEST_F(HeapFixture, Heapify_Normal_Conditions_With_Left_Right_Nodes_Null) {
+
 	}
+
 	TEST_F(HeapFixture, HeapMaximum_Grabs_Root_Node) {
 		std::vector<int> results = { 4 };
 		
