@@ -57,11 +57,11 @@ void MaxHeap::heapify(std::vector<int>& v, int index) {
 	int max = index;
 
 	// checking left and parent node
-	if (l < v.size() && v.at(l) > v.at(index)) max = l;
+	if (l < currentSize && v.at(l) > v.at(index)) max = l;
 	else max = index;
 
 	// checking right node and the previous max
-	if (r < v.size() && v.at(r) > v.at(max)) max = r;
+	if (r < currentSize && v.at(r) > v.at(max)) max = r;
 
 	// left or right node is swapped with parent
 	if (max != index) {
@@ -89,7 +89,7 @@ void MaxHeap::heapSort(std::vector<int>& v, int vSize) {
 	buildHeap(v, vSize);
 
 	for (int i = vSize; i > 0; i--) {
-		std::swap(v.at(vSize - 1), v.at(0)); // swaps max value with min value
+		std::swap(v.at(currentSize - 1), v.at(0)); // swaps max value with min value
 		this->currentSize--;
 		heapify(v, 0); // sorts only the root value, most likely breaks heap properities
 	}
