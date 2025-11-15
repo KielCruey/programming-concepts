@@ -119,6 +119,24 @@ namespace MaxHeapTests {
 		}
 	}
 
+	TEST_F(HeapFixture, BuildMaxHeap_Normal_Conditions) {
+		std::vector<int> results = { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+		MaxHeap h = MaxHeap();
+		h.buildHeap(results, results.size());
+
+		EXPECT_EQ(getVector()->at(0), results.at(0));
+	}
+
+	TEST_F(HeapFixture, HeapMaximum_Null_Heap) {
+		std::vector<int> results = {};
+
+		MaxHeap h = MaxHeap();
+		h.heapMaximum(results);
+
+		ASSERT_THROW(h.heapMaximum(results), std::runtime_error);
+	}
+
 	TEST_F(HeapFixture, HeapMaximum_Normal_Conditions) {
 		std::vector<int> results = { 4 };
 		
@@ -128,25 +146,20 @@ namespace MaxHeapTests {
 		EXPECT_EQ(getVector()->at(0), results.at(0));
 	}
 
-	/*
-	TEST_F(HeapFixture, HeapMaximum_Null_Heap) {
-		std::vector<int> results = {};
+
+
+	TEST_F(HeapFixture, HeapSort_Normal_Conditions) {
+		std::vector<int> results = { 1, 2, 3, 4, 7, 8, 9, 10, 14, 16 };
 
 		MaxHeap h = MaxHeap();
-		h.heapMaximum(results);
+		h.heapSort(*getVector(), getVector()->size());
 
-		ASSERT_THROW(h.heapMaximum(results), std::runtime_error);
+		for (int i = 0; i < getVector()->size(); i++)
+			EXPECT_EQ(getVector()->at(i), 1);
 	}
-	*/
 
-	TEST_F(HeapFixture, BuildMaxHeap_Normal_Conditions) {
-		std::vector<int> results = { 1, 2, 3, 4, 5, 6, 7, 8 };
 
-		MaxHeap h = MaxHeap();
-		h.buildHeap(results, results.size());
 
-		EXPECT_EQ(getVector()->at(0), results.at(0));
-	}
 }
 
 namespace MinHeapTests {
