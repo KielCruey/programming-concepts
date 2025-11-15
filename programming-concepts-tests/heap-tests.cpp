@@ -137,9 +137,8 @@ namespace MaxHeapTests {
 		std::vector<int> results = {};
 
 		MaxHeap h = MaxHeap();
-		h.heapMaximum(results);
 
-		ASSERT_THROW(h.heapMaximum(results), std::runtime_error);
+		EXPECT_THROW(h.heapMaximum(results), std::runtime_error);
 	}
 
 	TEST_F(HeapFixture, HeapMaximum_Normal_Conditions) {
