@@ -76,8 +76,8 @@ void MaxHeap::heapify(std::vector<int>& v, int index) {
 void MaxHeap::buildHeap(std::vector<int>& v, int vSize){
 	this->currentSize = vSize;
 
-	for (int i = vSize / 2; i > 0; i--) {
-		heapify(v, vSize);
+	for (int i = vSize / 2; i >= 0; i--) {
+		heapify(v, i);
 	}
 }
 

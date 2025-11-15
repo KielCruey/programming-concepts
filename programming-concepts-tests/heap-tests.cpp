@@ -140,10 +140,10 @@ namespace MaxHeapTests {
 	*/
 
 	TEST_F(HeapFixture, BuildMaxHeap_Normal_Conditions) {
-		std::vector<int> results = { 4 };
+		std::vector<int> results = { 1, 2, 3, 4, 5, 6, 7, 8 };
 
 		MaxHeap h = MaxHeap();
-		h.buildHeap(*getVector(), getVector()->size());
+		h.buildHeap(results, results.size());
 
 		EXPECT_EQ(getVector()->at(0), results.at(0));
 	}
