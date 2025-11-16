@@ -27,11 +27,13 @@ public:
 
 	// =========== getters/setters ===========
 	inline void setV(std::vector<int>* v);
+	inline void setCurrentSize(int currentSize);
+
 	inline std::vector<int>* getV() const;
+	inline int getCurrentSize() const;
 
 protected:
 	int currentSize;
-	int currentCapacity;
 	std::vector<int>* v;
 };
 
@@ -70,8 +72,16 @@ void Heap::setV(std::vector<int>* v) {
 	this->v = v;
 }
 
+inline void Heap::setCurrentSize(int currentSize) {
+	this->currentSize = currentSize;
+}
+
 std::vector<int>* Heap::getV() const {
 	return this->v;
+}
+
+inline int Heap::getCurrentSize() const {
+	return this->currentSize;
 }
 
 #endif

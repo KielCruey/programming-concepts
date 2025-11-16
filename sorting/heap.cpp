@@ -5,7 +5,6 @@ Heap::Heap(std::vector<int>* v)
 	: v(v)
 {
 	currentSize = NULL;
-	currentCapacity = NULL;
 }
 
 Heap::~Heap() {
@@ -50,7 +49,7 @@ MaxHeap::MaxHeap(std::vector<int>* v)
 
 // v is a vector of elements
 // index is the node of that particular value and every node under the initial node
-// this function only "sorts" only the left/right node then recursively goes down the tree and "sorts" again
+// this function only "sorts" only the left/right node then recursively goes down the tree with the maximum value and "sorts" again
 void MaxHeap::heapify(std::vector<int>& v, int index) {
  	int l = left(index);
 	int r = right(index);
