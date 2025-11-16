@@ -108,9 +108,9 @@ int MaxHeap::heapMaximum(std::vector<int>& v) {
 // returns max value
 int MaxHeap::extractMax(std::vector<int>& v) {
 	int max = heapMaximum(v);
-	v.at(0) = v.at(v.size() - 1);
+	v.at(0) = v.at(currentSize - 1);
 	this->currentSize--;
-	heapify(v, currentSize);
+	heapify(v, 0); // just "sort" the root node
 
 	return max;
 }
