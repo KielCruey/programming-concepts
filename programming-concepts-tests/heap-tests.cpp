@@ -6,82 +6,49 @@ namespace HeapTests {
 	TEST_F(HeapFixture, Parent) {
 		MaxHeap h = MaxHeap();
 
- 		auto parent0 = h.parent(0); // index 0's parent
-		auto parent1 = h.parent(1); // index 1's parent
-		auto parent2 = h.parent(2); // index 2's parent
-		auto parent3 = h.parent(3); // index 3's parent
-		auto parent4 = h.parent(4); // index 4's parent
-		auto parent5 = h.parent(5); // index 5's parent
-		auto parent6 = h.parent(6); // index 6's parent
-		auto parent7 = h.parent(7); // index 7's parent
-		auto parent8 = h.parent(8); // index 8's parent
-		auto parent9 = h.parent(9); // index 9's parent
-
 		// "-1" is null in this context
-		EXPECT_EQ(parent0, -1);
-		EXPECT_EQ(parent1, 0);
-		EXPECT_EQ(parent2, 0);
-		EXPECT_EQ(parent3, 1);
-		EXPECT_EQ(parent4, 1);
-		EXPECT_EQ(parent5, 2);
-		EXPECT_EQ(parent6, 2);
-		EXPECT_EQ(parent7, 3);
-		EXPECT_EQ(parent8, 3);
-		EXPECT_EQ(parent9, 4);
+		EXPECT_EQ(h.parent(0), -1);
+		EXPECT_EQ(h.parent(1), 0);
+		EXPECT_EQ(h.parent(2), 0);
+		EXPECT_EQ(h.parent(3), 1);
+		EXPECT_EQ(h.parent(4), 1);
+		EXPECT_EQ(h.parent(5), 2);
+		EXPECT_EQ(h.parent(6), 2);
+		EXPECT_EQ(h.parent(7), 3);
+		EXPECT_EQ(h.parent(8), 3);
+		EXPECT_EQ(h.parent(9), 4);
 	}
 
 	TEST_F(HeapFixture, Left) {
 		MaxHeap h = MaxHeap();
 
-		auto left0 = h.left(0); // index 0's left node
-		auto left1 = h.left(1); // index 1's left node
-		auto left2 = h.left(2); // index 2's left node
-		auto left3 = h.left(3); // index 3's left node
-		auto left4 = h.left(4); // index 4's left node
-		auto left5 = h.left(5); // index 5's left node
-		auto left6 = h.left(6); // index 6's left node
-		auto left7 = h.left(7); // index 7's left node
-		auto left8 = h.left(8); // index 8's left node
-		auto left9 = h.left(9); // index 9's left node
-
 		// "-1" is null in this context
-		EXPECT_EQ(left0, 1);
-		EXPECT_EQ(left1, 3);
-		EXPECT_EQ(left2, 5);
-		EXPECT_EQ(left3, 7);
-		EXPECT_EQ(left4, 9);
-		EXPECT_EQ(left5, 11);
-		EXPECT_EQ(left6, 13);
-		EXPECT_EQ(left7, 15);
-		EXPECT_EQ(left8, 17);
-		EXPECT_EQ(left9, 19);
+		EXPECT_EQ(h.left(0), 1);
+		EXPECT_EQ(h.left(1), 3);
+		EXPECT_EQ(h.left(2), 5);
+		EXPECT_EQ(h.left(3), 7);
+		EXPECT_EQ(h.left(4), 9);
+		EXPECT_EQ(h.left(5), 11);
+		EXPECT_EQ(h.left(6), 13);
+		EXPECT_EQ(h.left(7), 15);
+		EXPECT_EQ(h.left(8), 17);
+		EXPECT_EQ(h.left(9), 19);
 	}
 
 	TEST_F(HeapFixture, Right) {
 		MaxHeap h = MaxHeap();
 
-		auto right0 = h.right(0); // index 0's left node
-		auto right1 = h.right(1); // index 1's left node
-		auto right2 = h.right(2); // index 2's left node
-		auto right3 = h.right(3); // index 3's left node
-		auto right4 = h.right(4); // index 4's left node
-		auto right5 = h.right(5); // index 5's left node
-		auto right6 = h.right(6); // index 6's left node
-		auto right7 = h.right(7); // index 7's left node
-		auto right8 = h.right(8); // index 8's left node
-		auto right9 = h.right(9); // index 9's left node
-
 		// "-1" is null in this context
-		EXPECT_EQ(right0, 2);
-		EXPECT_EQ(right1, 4);
-		EXPECT_EQ(right2, 6);
-		EXPECT_EQ(right3, 8);
-		EXPECT_EQ(right4, 10);
-		EXPECT_EQ(right5, 12);
-		EXPECT_EQ(right6, 14);
-		EXPECT_EQ(right7, 16);
-		EXPECT_EQ(right8, 18);
-		EXPECT_EQ(right9, 20);
+		EXPECT_EQ(h.right(0), 2);
+		EXPECT_EQ(h.right(1), 4);
+		EXPECT_EQ(h.right(2), 6);
+		EXPECT_EQ(h.right(3), 8);
+		EXPECT_EQ(h.right(4), 10);
+		EXPECT_EQ(h.right(5), 12);
+		EXPECT_EQ(h.right(6), 14);
+		EXPECT_EQ(h.right(7), 16);
+		EXPECT_EQ(h.right(8), 18);
+		EXPECT_EQ(h.right(9), 20);
 	}
 }
 
@@ -90,8 +57,6 @@ namespace MaxHeapTests {
 	TEST_F(HeapFixture, Heapify_Normal_Conditions) {
 		std::vector<int> results = { 4, 16, 3, 2, 7, 9, 10, 14, 8, 1 };
 		std::vector<int> testV = { 4, 16, 3, 2, 7, 9, 10, 14, 8, 1 };
-
-		
 
 		MaxHeap h = MaxHeap(getVector());
 		h.heapify(testV, 1); // heapify index 1 which is "1" from test fixture
