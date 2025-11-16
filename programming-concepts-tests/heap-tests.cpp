@@ -158,6 +158,19 @@ namespace MaxHeapTests {
 		for (int i = 0; i < testV.size(); i++)
 			EXPECT_EQ(testV.at(i), results.at(i));
 	}
+
+	// ==== Insert ====
+	TEST_F(HeapFixture, Insert_Normal_Conditions) {
+		std::vector<int> testV = { 8, 7, 6, 5, 4, 3, 2, 1 };
+		std::vector<int> results = { 21, 8, 6, 7, 4, 3, 2, 1, 5 };
+
+		MaxHeap h = MaxHeap();
+		h.setCurrentSize(testV.size());
+		h.insert(testV, 21);
+		 
+		for(int i = 0; i < results.size(); i++)
+			EXPECT_EQ(testV.at(i), results.at(i));
+	}
 }
 
 namespace MinHeapTests {

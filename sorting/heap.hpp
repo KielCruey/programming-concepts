@@ -23,7 +23,7 @@ public:
 	virtual void heapify(std::vector<int>& v, int index) = 0;
 	virtual void buildHeap(std::vector<int>& v, int size) = 0;
 	virtual void heapSort(std::vector<int>& v, int vSize) = 0;
-	virtual void insert(std::vector<int>& v, int x, int key) = 0;
+	virtual void insert(std::vector<int>& v, int newKey) = 0;
 
 	// =========== getters/setters ===========
 	inline void setV(std::vector<int>* v);
@@ -45,7 +45,7 @@ public:
 	virtual void heapify(std::vector<int>& v, int index) override;
 	virtual void buildHeap(std::vector<int>& v, int size) override;
 	virtual void heapSort(std::vector<int>& v, int size) override;
-	virtual void insert(std::vector<int>& v, int x, int key) override;
+	virtual void insert(std::vector<int>& v, int newKey) override;
 
 	int heapMaximum(std::vector<int>& v);
 	void increaseKey(std::vector<int>& v, int newKey, int oldKey);
@@ -60,7 +60,7 @@ public:
 	virtual void heapify(std::vector<int>& v, int index) override;
 	virtual void buildHeap(std::vector<int>& v, int size) override;
 	virtual void heapSort(std::vector<int>& v, int size) override;
-	virtual void insert(std::vector<int>& v, int x, int key) override;
+	virtual void insert(std::vector<int>& v, int newKey) override;
 
 	int heapMinimum(std::vector<int>& v);
 	void decreaseKey(std::vector<int>& V, int newKey, int oldKey);

@@ -147,8 +147,12 @@ void MaxHeap::increaseKey(std::vector<int>& v, int oldKeyInTermsofIndex, int new
 
 // v is a vector of elements
 // x in the new value (object) to be inserted of the size "n" vector
-void MaxHeap::insert(std::vector<int>& v, int x, int key) {
+// will insert a new key and heapify it so it holds heap properities
+void MaxHeap::insert(std::vector<int>& v, int newKey) {
+	currentSize++;
+	v.push_back(-INT_MAX);
 
+	increaseKey(v, v.at(currentSize - 1), newKey);
 }
 
 // ======== MinHeap ========
@@ -238,9 +242,13 @@ void MinHeap::decreaseKey(std::vector<int>& V, int position, int key) {
 
 // V is a vector, vSize is the currentSize member variable, and key is the new value to be inserted
 // function adds a value to the end of the vector, then swaps around the values unit it holds the heap properities
+/*
 void MinHeap::insert(std::vector<int>& V, int vSize, int key) {
 	this->v->push_back(INT_MAX);
 
 	decreaseKey(V, currentSize, key);
 }
+*/
 
+void MinHeap::insert(std::vector<int>& V, int newKey) {
+}
