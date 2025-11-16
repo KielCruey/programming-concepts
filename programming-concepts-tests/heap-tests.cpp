@@ -89,12 +89,15 @@ namespace MaxHeapTests {
 	// ==== Heapify ====
 	TEST_F(HeapFixture, Heapify_Normal_Conditions) {
 		std::vector<int> results = { 4, 16, 3, 2, 7, 9, 10, 14, 8, 1 };
+		std::vector<int> testV = { 4, 16, 3, 2, 7, 9, 10, 14, 8, 1 };
 
-		MaxHeap h = MaxHeap();
-		h.heapify(*getVector(), 1); // heapify index 1 which is "1" from test fixture
+		
+
+		MaxHeap h = MaxHeap(getVector());
+		h.heapify(testV, 1); // heapify index 1 which is "1" from test fixture
 
 		for (int i = 0; i < getVector()->size(); i++) {
-			EXPECT_EQ(getVector()->at(i), results.at(i));
+			EXPECT_EQ(testV.at(i), results.at(i));
 		}
 	}
 
