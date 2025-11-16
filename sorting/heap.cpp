@@ -146,7 +146,7 @@ void MaxHeap::increaseKey(std::vector<int>& v, int oldKeyInTermsofIndex, int new
 }
 
 // v is a vector of elements
-// x in the new object to be inserted of the size "n" vector
+// x in the new value (object) to be inserted of the size "n" vector
 void MaxHeap::insert(std::vector<int>& v, int x, int key) {
 
 }
