@@ -118,26 +118,31 @@ int MaxHeap::extractMax(std::vector<int>& v) {
 // v is a vector of elements
 // x is the object in the vector
 // key is the new key to be changed to
-void MaxHeap::increaseKey(std::vector<int>& v, int newKey, int oldKey) {
-	int i; // index for oldKey's position
+void MaxHeap::increaseKey(std::vector<int>& v, int oldKeyInTermsofIndex, int newKey) {
+	int index = -1;
 
-	// checks if the new key value to be changed is less that the current object trying to change
-	if (oldKey < newKey) {
+	// checks if the new key value to be changed is less that 
+	// the current value (object) trying to change
+	if (oldKeyInTermsofIndex > newKey) {
 		fprintf(stderr, "new key is smaller than current key");
 		return;
 	}
 		
-	newKey = oldKey;
-
-	// find index where the oldKey is at
-	auto it = find(v.begin(), v.end(), oldKey);
-
-	/*
-	while (i > 0 && v.at(parent(i)) < v.at(i)) {
-		std::swap(v.at(i), v.at(parent(i)));
-		i = parent(i);
+	// finding index of oldKey
+	for (int i = 0; i < v.size(); i++) {
+		if (oldKeyInTermsofIndex == v.at(i)) {
+			index = i;
+		}
 	}
-	*/
+
+	v.at(index) = newKey;
+
+	// makes sure the increase key function holds heap properities
+	// if the newKey is the root, doesn't do this procedure
+	while (index > 0 && v.at(parent(index)) < v.at(index)) {
+		std::swap(v.at(index), v.at(parent(index)));
+		index = parent(index);
+	}
 }
 
 // v is a vector of elements

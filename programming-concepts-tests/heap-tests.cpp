@@ -130,6 +130,7 @@ namespace MaxHeapTests {
 			EXPECT_EQ(getVector()->at(i), results.at(i));
 	}
 
+	// ==== ExtractMax ====
 	TEST_F(HeapFixture, ExtractMax_Normal_Conditions) {
 		std::vector<int> testV = { 8, 7, 6, 5, 4, 3, 2, 1 };
 
@@ -144,6 +145,18 @@ namespace MaxHeapTests {
 		EXPECT_EQ(h.extractMax(testV), 3);
 		EXPECT_EQ(h.extractMax(testV), 2);
 		EXPECT_EQ(h.extractMax(testV), 1);
+	}
+
+	// ==== ExtractMax ====
+	TEST_F(HeapFixture, IncreaseKey_Normal_Conditions) {
+		std::vector<int> testV = { 8, 7, 6, 5, 4, 3, 2, 1 };
+		std::vector<int> results = { 12, 7, 8, 5, 4, 6, 2, 1 };
+
+		MaxHeap h = MaxHeap();
+		h.increaseKey(testV, testV.at(5), 12);
+
+		for (int i = 0; i < testV.size(); i++)
+			EXPECT_EQ(testV.at(i), results.at(i));
 	}
 }
 
