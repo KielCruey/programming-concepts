@@ -37,7 +37,3 @@ private:
 	SLLNode<t>* head;
 	SLLNode<t>* tail;
 };
-
-#include "singly-linked-list.inl"
-
-

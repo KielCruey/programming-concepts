@@ -1,3 +1,5 @@
+#include "singly-linked-list.hpp"
+
 // =============== SLLNode ===============
 template<class t>
 SLLNode<t>::SLLNode() :

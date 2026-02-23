@@ -1,3 +1,5 @@
+#include "doubly-linked-list.hpp"
+
 // ========== DLLNode ==========
 template <class t>
 DLLNode<t>::DLLNode() :

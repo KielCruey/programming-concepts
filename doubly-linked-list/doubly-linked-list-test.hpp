@@ -1,7 +1,6 @@
 #include "../doubly-linked-list/doubly-linked-list.hpp"
 
 // test fixture
-
 class DLListTest : public testing::Test
 {
 public:
