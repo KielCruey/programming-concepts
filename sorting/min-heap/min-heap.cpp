@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <cmath>
 #include <climits> // INT_MIN, INT_MAX
-#include <array>
 #include <algorithm> // swap
 
 #include "heap.h"
 
-// assumes that the current heap properities are satified then, at some index,
+HEAP(int capacity = NULL, int size = NULL, int* H = nullptr) 
+    : capacity(capacity), size(size), H(H)
+{ }
+
+// assumes that the current heap properties are satisfied then, at some index,
 // that new index value may violate the heap properties and moves it to correct location
 void Heapify(HEAP* h, int index) {
 	// check for only one number -- that is the smallest number
@@ -35,7 +38,7 @@ void Heapify(HEAP* h, int index) {
 	}
 }
 
-// builds a heap while statifying the heap properties
+// builds a heap while satisfying the heap properties
 void BuildHeap(HEAP* h, int size) {
 	if(size == 0)
 		return;
