@@ -9,6 +9,7 @@ Heap::Heap(int capacity, int size, int* H)
 	: capacity(capacity), size(size), H(H)
 { }
 
+// helper function
 // assumes that the current Heap properties are satisfied then, at some index,
 // that new index value may violate the Heap properties and moves it to correct location
 void Heap::Heapify(Heap* h, int index) {
@@ -58,7 +59,7 @@ void Heap::Heapsort(Heap* h, int size) {
 	for (int i = size; 1 <= i; i--) {
 		h->H[0] = h->H[i];
 		h->size--;
-		Heapify(h, 1);
+		Heapify(h, 0);
 	}
 }
 
@@ -80,6 +81,7 @@ int Heap::ExtractMin(Heap* h) {
 	return minKey;
 }
 
+// helper function
 // takes an already existing element, changes the key value, then heapifys
 void Heap::DecreaseKey(Heap* h, int index, int newKey) {
 	// checks if the replacement newKey is smaller
@@ -184,9 +186,4 @@ int Heap::getMinimum(Heap* h) {
 	}
 
 	return h->H[0];
-}
-
-// ======= main =======
-int main() {
-	return 0;
 }

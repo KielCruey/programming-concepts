@@ -4,11 +4,9 @@ class Heap
 public:
     Heap(int capacity = NULL, int size = NULL, int* H = nullptr);
 
-    void Heapify(Heap* h, int index);
     void BuildHeap(Heap* h, int size);
     void Heapsort(Heap* h, int size);
     int ExtractMin(Heap* h);
-    void DecreaseKey(Heap* h, int index, int newKey);
     Heap* Insertion(Heap *v, int size, int newElement);
 
     // ======== getters/setters ========
@@ -18,6 +16,10 @@ public:
     int getMinimum(Heap* h);
 
 private:
+    // helper functions
+    void Heapify(Heap* h, int index);
+    void DecreaseKey(Heap* h, int index, int newKey);
+
     int capacity; // capacity of the Heap
     int size; // current size of the Heap
     int* H; // array of indices to the ELEMENT array
