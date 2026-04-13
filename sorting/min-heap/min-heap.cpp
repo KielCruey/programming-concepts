@@ -3,15 +3,15 @@
 #include <climits> // INT_MIN, INT_MAX
 #include <algorithm> // swap
 
-#include "heap.h"
+#include "min-heap.hpp"
 
-HEAP(int capacity = NULL, int size = NULL, int* H = nullptr) 
-    : capacity(capacity), size(size), H(H)
+Heap::Heap(int capacity, int size, int* H)
+	: capacity(capacity), size(size), H(H)
 { }
 
-// assumes that the current heap properties are satisfied then, at some index,
-// that new index value may violate the heap properties and moves it to correct location
-void Heapify(HEAP* h, int index) {
+// assumes that the current Heap properties are satisfied then, at some index,
+// that new index value may violate the Heap properties and moves it to correct location
+void Heap::Heapify(Heap* h, int index) {
 	// check for only one number -- that is the smallest number
 	if (h->size <= 1)
 		return;
@@ -38,21 +38,21 @@ void Heapify(HEAP* h, int index) {
 	}
 }
 
-// builds a heap while satisfying the heap properties
-void BuildHeap(HEAP* h, int size) {
-	if(size == 0)
+// builds a Heap while satisfying the Heap properties
+void Heap::BuildHeap(Heap* h, int size) {
+	if (size == 0)
 		return;
 
 	h->size = size;
 
-	for (int i = std::floor((size - 2) / 2); i >= 0; i--)
+	for (int i = static_cast<int>(std::floor((size - 2) / 2)); i >= 0; i--)
 		Heapify(h, i);
 }
 
-// builds a heap, then sorts the array, this array with be sorted,
-// if it's a max-heap, the array will be sorted in accending order, 
-// if it's a min-heap, the array will be sorted in descending order
-void Heapsort(HEAP* h, int size) {
+// builds a Heap, then sorts the array, this array with be sorted,
+// if it's a max-Heap, the array will be sorted in accending order, 
+// if it's a min-Heap, the array will be sorted in descending order
+void Heap::Heapsort(Heap* h, int size) {
 	BuildHeap(h, size);
 
 	for (int i = size; 1 <= i; i--) {
@@ -62,14 +62,14 @@ void Heapsort(HEAP* h, int size) {
 	}
 }
 
-// grabs the minimum element (the root), then reorders the the heap to satisfy the heap properties
-int ExtractMin(HEAP* h) {
+// grabs the minimum element (the root), then reorders the the Heap to satisfy the Heap properties
+int Heap::ExtractMin(Heap* h) {
 	// checks if there's two or more elements
 	if (h->size < 1) {
 		fprintf(stderr, "Heap underflow\n");
 		return INT_MIN;
 	}
-		
+
 	int minKey = getMinimum(h); // gets root element
 	int maxIndex = h->size - 1; // gets last element index
 	h->H[0] = h->H[maxIndex]; // last element overwrites root element
@@ -81,7 +81,7 @@ int ExtractMin(HEAP* h) {
 }
 
 // takes an already existing element, changes the key value, then heapifys
-void DecreaseKey(HEAP* h, int index, int newKey) {
+void Heap::DecreaseKey(Heap* h, int index, int newKey) {
 	// checks if the replacement newKey is smaller
 	if (newKey > h->H[index]) {
 		fprintf(stderr, "New key is greater than current key\n");
@@ -90,7 +90,7 @@ void DecreaseKey(HEAP* h, int index, int newKey) {
 
 	h->H[index] = newKey;
 
-	// makes sure added new key satisfies the heap properties
+	// makes sure added new key satisfies the Heap properties
 	while (index > 0 && h->H[getParentNode(h, index)] > h->H[index]) {
 		std::swap(h->H[getParentNode(h, index)], h->H[index]);
 		index = getParentNode(h, index);
@@ -98,7 +98,7 @@ void DecreaseKey(HEAP* h, int index, int newKey) {
 }
 
 // adds an element to the last position, then heapifys
-HEAP* Insertion(HEAP* h, int size, int newElement) {
+Heap* Heap::Insertion(Heap* h, int size, int newElement) {
 	// checks if there's room in the tree, if not, don't insert
 	if (size >= h->capacity) {
 		fprintf(stderr, "Heap is full\n");
@@ -114,9 +114,9 @@ HEAP* Insertion(HEAP* h, int size, int newElement) {
 
 // ======== getters/setters ========
 // returns index
-int getParentNode(HEAP* h, int currentIndex) {
+int Heap::getParentNode(Heap* h, int currentIndex) {
 	int size = h->size - 1;
-	
+
 	// checks if root node, which has no parent, else returns itself
 	if (currentIndex == 0) return 0;
 	// check overbound and underbound index
@@ -126,17 +126,17 @@ int getParentNode(HEAP* h, int currentIndex) {
 	}
 	// check parent index is valid
 	else {
-		int parentIndex = std::floor((currentIndex - 1) / 2);
+		int parentIndex = static_cast<int>(std::floor((currentIndex - 1) / 2));
 		return parentIndex;
 	}
 }
 
 // returns index
-int getLeftChild(HEAP* h, int currentIndex) {
+int Heap::getLeftChild(Heap* h, int currentIndex) {
 	int size = h->size - 1;
 
 	// checks out of bounds index
-	if(currentIndex < 0 || currentIndex > size) {
+	if (currentIndex < 0 || currentIndex > size) {
 		fprintf(stderr, "Invalid left child index\n");
 		return -1;
 	}
@@ -144,7 +144,7 @@ int getLeftChild(HEAP* h, int currentIndex) {
 	else {
 		int leftChildIndex = 2 * currentIndex + 1;
 
-		if(leftChildIndex < 0 || leftChildIndex > size) {
+		if (leftChildIndex < 0 || leftChildIndex > size) {
 			fprintf(stderr, "Invalid left child index\n");
 			return -1;
 		}
@@ -154,7 +154,7 @@ int getLeftChild(HEAP* h, int currentIndex) {
 }
 
 // returns index
-int getRightChild(HEAP* h, int currentIndex) {
+int Heap::getRightChild(Heap* h, int currentIndex) {
 	int size = h->size;
 
 	// checks out of bounds index
@@ -176,7 +176,7 @@ int getRightChild(HEAP* h, int currentIndex) {
 }
 
 // returns index's content
-int getMinimum(HEAP* h) {
+int Heap::getMinimum(Heap* h) {
 	// check at least one element exists
 	if (h->size < 1) {
 		fprintf(stderr, "Empty Array\n");
@@ -184,4 +184,9 @@ int getMinimum(HEAP* h) {
 	}
 
 	return h->H[0];
+}
+
+// ======= main =======
+int main() {
+	return 0;
 }
